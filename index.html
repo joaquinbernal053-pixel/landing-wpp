@@ -7,44 +7,48 @@
 
   <!-- Meta Pixel Code -->
   <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;
+      n=f.fbq=function(){
+        n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments)
+      };
+      if(!f._fbq)f._fbq=n;
+      n.push=n;
+      n.loaded=!0;
+      n.version='2.0';
+      n.queue=[];
+      t=b.createElement(e);
+      t.async=!0;
+      t.src=v;
+      s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
 
     fbq('init', '857136047183641');
     fbq('track', 'PageView');
   </script>
+
   <noscript>
     <img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=857136047183641&ev=PageView&noscript=1"/>
   </noscript>
   <!-- End Meta Pixel Code -->
 
-  <!-- WhatsApp URL + Evento Contact + Redirect seguro -->
+  <!-- Contact + Redirect a WhatsApp (CONFIG FINAL) -->
   <script>
     const phone = "5491125036531";
     const msg = "Quiero más información sobre la plataforma";
     const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
 
-    // Esperar que cargue todo + dar margen para que fbq esté disponible,
-    // disparar Contact y recién después redirigir.
-    window.addEventListener("load", function () {
-      setTimeout(function () {
-        if (typeof fbq === "function") {
-          fbq('track', 'Contact');
-        }
+    // 🔥 Disparo inmediato del evento Contact
+    if (typeof fbq === "function") {
+      fbq('track', 'Contact');
+    }
 
-        setTimeout(function () {
-          window.location.href = url;
-        }, 1500);
-
-      }, 500);
-    });
+    // ⏳ Delay largo para que Meta reciba el evento antes del redirect
+    setTimeout(function () {
+      window.location.href = url;
+    }, 2000);
   </script>
 
   <style>
@@ -83,7 +87,7 @@
   </div>
 
   <script>
-    // Fallback link por si no se abre el redirect automático
+    // Link fallback por si el redirect automático falla
     document.getElementById("fallback").href = url;
   </script>
 </body>
