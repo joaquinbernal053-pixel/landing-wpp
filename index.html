@@ -25,22 +25,25 @@
   </noscript>
   <!-- End Meta Pixel Code -->
 
-  <!-- Redirect a WhatsApp + Evento Contact -->
+  <!-- WhatsApp URL + Evento Contact + Redirect seguro -->
   <script>
     const phone = "5491125036531";
     const msg = "Quiero más información sobre la plataforma";
     const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
 
-    // Disparar evento de alta intención antes del redirect
-    window.addEventListener("load", () => {
-      if (typeof fbq === "function") {
-        fbq('track', 'Contact');
-      }
+    // Esperar que cargue todo + dar margen para que fbq esté disponible,
+    // disparar Contact y recién después redirigir.
+    window.addEventListener("load", function () {
+      setTimeout(function () {
+        if (typeof fbq === "function") {
+          fbq('track', 'Contact');
+        }
 
-      // Darle tiempo al pixel a enviar el evento antes de redirigir
-      setTimeout(() => {
-        window.location.href = url;
-      }, 800);
+        setTimeout(function () {
+          window.location.href = url;
+        }, 1500);
+
+      }, 500);
     });
   </script>
 
@@ -80,6 +83,7 @@
   </div>
 
   <script>
+    // Fallback link por si no se abre el redirect automático
     document.getElementById("fallback").href = url;
   </script>
 </body>
