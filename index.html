@@ -25,15 +25,23 @@
   </noscript>
   <!-- End Meta Pixel Code -->
 
-  <!-- Redirect a WhatsApp -->
+  <!-- Redirect a WhatsApp + Evento Contact -->
   <script>
     const phone = "5491125036531";
-    const msg = "Hola! Quiero más info.";
+    const msg = "Quiero más información sobre la plataforma";
     const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
 
-    setTimeout(() => {
-      window.location.href = url;
-    }, 800);
+    // Disparar evento de alta intención antes del redirect
+    window.addEventListener("load", () => {
+      if (typeof fbq === "function") {
+        fbq('track', 'Contact');
+      }
+
+      // Darle tiempo al pixel a enviar el evento antes de redirigir
+      setTimeout(() => {
+        window.location.href = url;
+      }, 800);
+    });
   </script>
 
   <style>
