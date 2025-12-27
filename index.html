@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conectando con WhatsApp</title>
+
+  <script>
+    const phone = "5491125036531";
+    const msg = "Hola! Quiero más info.";
+
+    const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
+
+    setTimeout(() => {
+      window.location.href = url;
+    }, 800);
+  </script>
+
+  <style>
+    body{
+      margin:0;
+      background:#e9f7ef;
+      font-family: Arial, sans-serif;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      color:#1f7a4d;
+    }
+    .box{max-width:320px;padding:20px}
+    .spinner{
+      width:60px;height:60px;
+      border:6px solid #c8ecd9;
+      border-top:6px solid #25d366;
+      border-radius:50%;
+      animation:spin 1s linear infinite;
+      margin:0 auto 20px
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+    p{font-size:14px;opacity:.8}
+    a{display:block;margin-top:15px;color:#1f7a4d}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="spinner"></div>
+    <h2>Conectando con WhatsApp</h2>
+    <p>Te redirigiremos en un momento</p>
+    <a id="fallback" href="#">Si no se abre, tocá acá</a>
+  </div>
+
+  <script>
+    document.getElementById("fallback").href = url;
+  </script>
+</body>
+</html>
