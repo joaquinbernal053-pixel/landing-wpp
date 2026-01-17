@@ -6,7 +6,7 @@
   <title>Plataforma Verificada</title>
   <meta name="description" content="Acceso VIP por WhatsApp. Atención 24/7.">
 
-  <!-- META PIXEL -->
+  <!-- META PIXEL (NEW) -->
   <script>
     !function(f,b,e,v,n,t,s){
       if(f.fbq)return;
@@ -28,8 +28,9 @@
 
   <noscript>
     <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=857136047183641&ev=PageView&noscript=1"/>
+      src="https://www.facebook.com/tr?id=4343151859342130&ev=PageView&noscript=1"/>
   </noscript>
+  <!-- END META PIXEL -->
 
   <style>
     *{ box-sizing:border-box }
@@ -171,11 +172,11 @@
 
   <script>
     const PHONE_E164 = "542234563494";
-    const MESSAGE = "Hola 💬 , vengo desde el anuncio. Quiero un usuario y reclamar el bono del 100%.";
+    const MESSAGE = "Hola 💬, vengo desde el anuncio. Quiero un usuario y reclamar el bono del 100%.";
 
     document.getElementById("waBtn").addEventListener("click", function(){
-      if(typeof fbq === "function"){
-        fbq('track','Contact',{channel:'whatsapp'});
+      if(typeof window.fbq === "function"){
+        window.fbq('track','Contact',{channel:'whatsapp'});
       }
       window.location.href =
         "https://wa.me/" + PHONE_E164 + "?text=" + encodeURIComponent(MESSAGE);
