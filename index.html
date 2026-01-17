@@ -1,21 +1,147 @@
-<script>
-  const PHONE_E164 = "542234563494";
-  const MESSAGE ="Hola 👋, vengo desde el anuncio. Quiero un usuario y reclamar el bono del 50%.";
-  const AUTO_REDIRECT_SECONDS = 2;
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acceso VIP</title>
+  <meta name="description" content="Acceso VIP por WhatsApp. Atención 24/7." />
 
-  function waUrl(){
-    return `https://wa.me/${PHONE_E164}?text=${encodeURIComponent(MESSAGE)}`;
-  }
+  <!-- META PIXEL -->
+  <script>
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;n=f.fbq=function(){
+        n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments)
+      };
+      if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
 
-  function goWA(from){
-    if(from === "click"){
-      fbq('track', 'Contact', { channel:'whatsapp' });
+    fbq('init', '857136047183641');
+    fbq('track', 'PageView');
+  </script>
+
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=857136047183641&ev=PageView&noscript=1"/>
+  </noscript>
+
+  <style>
+    :root{
+      --stroke:rgba(255,255,255,.08);
+      --text:#EAF0FF;
+      --muted:rgba(234,240,255,.65);
+      --gold1:#FFDF8A; --gold2:#E7A728; --gold3:#B87410;
+      --shadow:0 30px 70px rgba(0,0,0,.55);
+      --radius:22px;
     }
-    setTimeout(()=>{ window.location.href = waUrl(); }, 250);
-  }
+    *{box-sizing:border-box}
+    body{
+      margin:0; min-height:100vh;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background:
+        radial-gradient(1200px 900px at 50% -100px, rgba(255,186,64,.18), transparent 55%),
+        radial-gradient(900px 700px at 50% 240px, rgba(255,186,64,.10), transparent 60%),
+        linear-gradient(180deg, #050814 0%, #050814 30%, #04060E 100%);
+      color:var(--text);
+    }
+    .wrap{max-width:460px;margin:0 auto;padding:26px 18px 30px}
+    .brand{display:flex;justify-content:center;margin:10px 0}
+    .coin{
+      width:150px;height:150px;border-radius:999px;
+      display:flex;align-items:center;justify-content:center;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.16), transparent 42%),
+        radial-gradient(circle at 50% 65%, rgba(255,186,64,.20), transparent 55%),
+        radial-gradient(circle at 50% 50%, rgba(0,0,0,.35), rgba(0,0,0,.75));
+      border:1px solid rgba(255,186,64,.22);
+      box-shadow:0 20px 50px rgba(0,0,0,.55);
+      text-align:center;
+    }
+    .title{
+      font-weight:900;letter-spacing:.12em;font-size:30px;
+      background: linear-gradient(180deg, var(--gold1), var(--gold2), var(--gold3));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .vip{text-align:center;margin:12px 0 18px}
+    .vip span{
+      border:1px solid rgba(255,186,64,.28);
+      padding:10px 18px;border-radius:999px;
+      font-weight:700;font-size:12px;letter-spacing:.12em;
+      color:rgba(255,223,138,.95);
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(11,22,48,.92), rgba(8,14,30,.92));
+      border:1px solid var(--stroke);
+      box-shadow:var(--shadow);
+      border-radius:var(--radius);
+      padding:18px;
+    }
+    h1{margin:0 0 8px;font-size:28px;text-transform:uppercase}
+    .gold{color:var(--gold2)}
+    .sub{margin:0 0 14px;color:var(--muted)}
+    .btn{
+      width:100%;padding:16px;border-radius:18px;
+      background: linear-gradient(180deg, #FFD98A, #E8A82B);
+      color:#1b1203;font-weight:900;
+      letter-spacing:.12em;text-transform:uppercase;
+      border:0;cursor:pointer;
+    }
+    .loading{text-align:center;margin-top:12px;font-size:12px;color:rgba(255,223,138,.85)}
+    footer{text-align:center;margin-top:14px;font-size:12px;color:rgba(234,240,255,.55)}
+  </style>
+</head>
 
-  document.getElementById("waBtn")
-    .addEventListener("click", ()=>goWA("click"));
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <div class="coin">
+        <div class="title">ATLANTIS</div>
+      </div>
+    </div>
 
-  setTimeout(()=>goWA("auto"), AUTO_REDIRECT_SECONDS * 1000);
-</script>
+    <div class="vip"><span>ACCESO VIP</span></div>
+
+    <div class="card">
+      <h1>OBTENÉ UN <span class="gold">50%</span><br>ADICIONAL</h1>
+      <p class="sub">Acceso inmediato por WhatsApp.</p>
+
+      <button id="waBtn" class="btn">WHATSAPP OFICIAL</button>
+
+      <div class="loading">
+        Redirigiendo automáticamente…
+      </div>
+    </div>
+
+    <footer>+18 · Jugá con responsabilidad</footer>
+  </div>
+
+  <script>
+    const PHONE_E164 = "542234563494";
+    const MESSAGE = "Hola 👋, vengo desde el anuncio. Quiero un usuario y reclamar el bono del 50%.";
+    const AUTO_REDIRECT_SECONDS = 2;
+
+    function waUrl(){
+      return `https://wa.me/${PHONE_E164}?text=${encodeURIComponent(MESSAGE)}`;
+    }
+
+    function goWA(from){
+      if(from === "click" && typeof window.fbq === "function"){
+        window.fbq('track', 'Contact', { channel:'whatsapp' });
+      }
+      setTimeout(() => {
+        window.location.href = waUrl();
+      }, 250);
+    }
+
+    const btn = document.getElementById("waBtn");
+    if(btn){
+      btn.addEventListener("click", () => goWA("click"));
+    }
+
+    setTimeout(() => goWA("auto"), AUTO_REDIRECT_SECONDS * 1000);
+  </script>
+</body>
+</html>
