@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Acceso VIP</title>
-  <meta name="description" content="Acceso VIP por WhatsApp. Atención 24/7." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plataforma Verificada</title>
+  <meta name="description" content="Acceso VIP por WhatsApp. Atención 24/7.">
 
   <!-- META PIXEL -->
   <script>
@@ -26,152 +26,141 @@
     fbq('track', 'PageView');
   </script>
 
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=857136047183641&ev=PageView&noscript=1"/>
+  </noscript>
+
   <style>
-    :root{
-      --text:#EAF0FF;
-      --muted:rgba(234,240,255,.65);
-      --gold1:#FFDF8A; --gold2:#E7A728; --gold3:#B87410;
-      --shadow:0 30px 70px rgba(0,0,0,.6);
-      --radius:22px;
-      --wa1:#25D366; --wa2:#1FB85A;
-    }
     *{box-sizing:border-box}
 
     body{
       margin:0;
       min-height:100vh;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color:var(--text);
-      background:url("/E5AD2979-1953-433A-906F-349C39-F45788.png") center / cover no-repeat fixed;
-      position:relative;
-    }
 
-    /* capa oscura para que destaque el contenido */
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
+      /* FONDO CON IMAGEN + OSCURECIDO */
       background:
-        radial-gradient(600px 900px at 50% 30%, rgba(0,0,0,.35), rgba(0,0,0,.85)),
-        linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.85));
-      z-index:0;
+        linear-gradient(rgba(5,8,20,.85), rgba(5,8,20,.85)),
+        url("/E5AD2979-1953-433A-906F-349C39-F45788.png") center / cover no-repeat;
+
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      padding-top:40px;
+      color:#EAF0FF;
     }
 
     .wrap{
-      position:relative;
-      z-index:1;
-      max-width:460px;
-      margin:0 auto;
-      padding:26px 18px 36px;
+      width:100%;
+      max-width:420px;
+      padding:20px;
     }
 
-    .brand{
-      display:flex;justify-content:center;margin:10px 0;
-    }
-
-    .coin{
-      width:150px;height:150px;border-radius:999px;
-      display:flex;align-items:center;justify-content:center;
-      background:radial-gradient(circle at 50% 45%, #1a1a1a, #000);
-      border:1px solid rgba(255,215,120,.35);
-      box-shadow:0 20px 50px rgba(0,0,0,.65);
-    }
-
-    .title{
-      font-weight:900;
-      letter-spacing:.08em;
-      font-size:22px;
+    .logo{
+      width:150px;
+      height:150px;
+      margin:0 auto 12px;
+      border-radius:50%;
+      background:radial-gradient(circle at top, #2a2a2a, #000);
+      display:flex;
+      align-items:center;
+      justify-content:center;
       text-align:center;
-      background:linear-gradient(180deg, var(--gold1), var(--gold2), var(--gold3));
-      -webkit-background-clip:text;
-      color:transparent;
+      font-weight:900;
+      letter-spacing:.14em;
+      color:#e7a728;
     }
 
-    .vip{text-align:center;margin:14px 0 18px}
+    .vip{
+      text-align:center;
+      margin-bottom:14px;
+    }
+
     .vip span{
-      border:1px solid rgba(255,215,120,.4);
-      padding:10px 18px;border-radius:999px;
-      font-size:12px;font-weight:700;
+      border:1px solid rgba(255,200,120,.4);
+      padding:10px 20px;
+      border-radius:999px;
+      font-size:12px;
       letter-spacing:.12em;
-      color:rgba(255,223,138,.95);
-      background:rgba(0,0,0,.35);
     }
 
     .card{
-      background:linear-gradient(180deg, rgba(8,14,30,.92), rgba(5,8,18,.92));
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow:var(--shadow);
-      border-radius:var(--radius);
-      padding:20px 18px 22px;
+      background:rgba(8,14,30,.92);
+      border-radius:22px;
+      padding:22px;
+      box-shadow:0 30px 70px rgba(0,0,0,.6);
+      text-align:center;
     }
 
-    h1{margin:0 0 10px;font-size:28px;text-transform:uppercase}
-    .gold{color:var(--gold2)}
-    .sub{text-align:center;color:var(--muted);margin-bottom:14px}
-    .hint{text-align:center;font-size:12px;color:rgba(255,255,255,.75);margin-bottom:12px}
+    h1{
+      margin:0 0 10px;
+      font-size:28px;
+      text-transform:uppercase;
+    }
 
-    .waBtn{
+    .gold{
+      color:#e7a728;
+    }
+
+    .sub{
+      color:rgba(234,240,255,.7);
+      margin-bottom:18px;
+    }
+
+    .hint{
+      font-size:13px;
+      margin-bottom:14px;
+      opacity:.9;
+    }
+
+    .btn{
       width:100%;
-      padding:16px;
+      border:none;
       border-radius:18px;
-      border:0;
-      cursor:pointer;
-      background:linear-gradient(180deg, var(--wa1), var(--wa2));
-      color:#05210f;
+      padding:16px;
       font-weight:900;
       letter-spacing:.06em;
-      text-transform:uppercase;
+      font-size:15px;
+      cursor:pointer;
+
+      background:linear-gradient(180deg,#2eff8f,#1fbf63);
+      color:#062c16;
+
       display:flex;
       align-items:center;
       justify-content:center;
       gap:10px;
-      box-shadow:
-        0 16px 38px rgba(37,211,102,.35),
-        0 10px 26px rgba(0,0,0,.6);
-      position:relative;
-    }
-
-    .waBtn::after{
-      content:"";
-      position:absolute;
-      inset:-6px;
-      border-radius:22px;
-      animation:pulse 1.6s infinite;
-      box-shadow:0 0 0 0 rgba(37,211,102,.35);
-    }
-
-    @keyframes pulse{
-      0%{box-shadow:0 0 0 0 rgba(37,211,102,.35)}
-      70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}
-      100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
     }
 
     footer{
       text-align:center;
       margin-top:14px;
       font-size:12px;
-      color:rgba(234,240,255,.55);
+      opacity:.6;
     }
   </style>
 </head>
 
 <body>
+
   <div class="wrap">
-    <div class="brand">
-      <div class="coin">
-        <div class="title">PLATAFORMA<br>VERIFICADA</div>
-      </div>
+    <div class="logo">
+      PLATAFORMA<br>VERIFICADA
     </div>
 
-    <div class="vip"><span>ACCESO VIP</span></div>
+    <div class="vip">
+      <span>ACCESO VIP</span>
+    </div>
 
     <div class="card">
       <h1>OBTENÉ UN <span class="gold">100%</span><br>ADICIONAL</h1>
       <p class="sub">Acceso inmediato por WhatsApp.</p>
+
       <p class="hint">Tocá el botón verde para hablar con un operador.</p>
 
-      <button id="waBtn" class="waBtn">
-        WHATSAPP · HABLÁ CON UN OPERADOR Y RECLAMÁ EL BONO
+      <button id="waBtn" class="btn">
+        💬 WHATSAPP · HABLÁ CON UN OPERADOR
       </button>
     </div>
 
@@ -182,14 +171,17 @@
     const PHONE_E164 = "542234563494";
     const MESSAGE = "Hola 💬, vengo desde el anuncio. Quiero un usuario y reclamar el bono del 100%.";
 
-    function goWA(){
+    function waUrl(){
+      return "https://wa.me/" + PHONE_E164 + "?text=" + encodeURIComponent(MESSAGE);
+    }
+
+    document.getElementById("waBtn").addEventListener("click", function(){
       if(typeof fbq === "function"){
         fbq('track','Contact',{channel:'whatsapp'});
       }
-      window.location.href = "https://wa.me/"+PHONE_E164+"?text="+encodeURIComponent(MESSAGE);
-    }
-
-    document.getElementById("waBtn").addEventListener("click", goWA);
+      window.location.href = waUrl();
+    });
   </script>
+
 </body>
 </html>
