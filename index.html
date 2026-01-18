@@ -7,23 +7,33 @@
   <meta name="description" content="Acceso VIP por WhatsApp. Atención 24/7.">
 
   <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){
-n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];
-t=b.createElement(e);t.async=!0;
-t.src=v;
-s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
+  <script>
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;
+      n=f.fbq=function(){
+        n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments)
+      };
+      if(!f._fbq)f._fbq=n;
+      n.push=n;
+      n.loaded=!0;
+      n.version='2.0';
+      n.queue=[];
+      t=b.createElement(e); t.async=!0;
+      t.src=v;
+      s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s);
+    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
 
-fbq('init', '1479248860230971');
-fbq('track', 'PageView');
-</script>
-<!-- End Meta Pixel Code -->
+    fbq('init', '1479248860230971');
+    fbq('track', 'PageView');
+  </script>
+
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1479248860230971&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+
   <style>
     *{ box-sizing:border-box }
 
@@ -31,11 +41,9 @@ fbq('track', 'PageView');
       margin:0;
       min-height:100vh;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-
       background:
         linear-gradient(rgba(5,8,20,.85), rgba(5,8,20,.85)),
         url("bg-slots.png") center / cover no-repeat;
-
       display:flex;
       justify-content:center;
       align-items:flex-start;
@@ -116,15 +124,12 @@ fbq('track', 'PageView');
       letter-spacing:.05em;
       font-size:15px;
       cursor:pointer;
-
       background:linear-gradient(180deg,#2eff8f,#1fbf63);
       color:#062c16;
-
       display:flex;
       align-items:center;
       justify-content:center;
       gap:10px;
-
       box-shadow:0 12px 30px rgba(46,255,143,.35);
     }
 
@@ -151,7 +156,6 @@ fbq('track', 'PageView');
     <div class="card">
       <h1>OBTENÉ UN <span class="gold">100%</span><br>ADICIONAL</h1>
       <p class="sub">Acceso inmediato por WhatsApp.</p>
-
       <p class="hint">Tocá el botón verde para hablar con un operador.</p>
 
       <button id="waBtn" class="btn">
@@ -164,14 +168,16 @@ fbq('track', 'PageView');
 
   <script>
     const PHONE_E164 = "542234563494";
-    const MESSAGE = "Hola 💬, vengo desde el anuncio. Quiero un usuario y reclamar el bono del 100%.";
+    const MESSAGE = "Hola, vengo desde el anuncio. Quiero un usuario y reclamar el bono del 100%.";
 
     document.getElementById("waBtn").addEventListener("click", function(){
       if(typeof window.fbq === "function"){
-        window.fbq('track','Contact',{channel:'whatsapp'});
+        window.fbq('track','Contact',{ channel:'whatsapp' });
       }
-      window.location.href =
-        "https://wa.me/" + PHONE_E164 + "?text=" + encodeURIComponent(MESSAGE);
+      setTimeout(() => {
+        window.location.href =
+          "https://wa.me/" + PHONE_E164 + "?text=" + encodeURIComponent(MESSAGE);
+      }, 250);
     });
   </script>
 
