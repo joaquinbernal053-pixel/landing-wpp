@@ -158,7 +158,7 @@
       <p class="sub">Acceso inmediato por WhatsApp.</p>
       <p class="hint">Tocá el botón verde para hablar con un operador.</p>
 
-      <button id="waBtn" class="btn">
+      <button id="waBtn" class="btn" type="button">
         💬 WHATSAPP · HABLÁ CON UN OPERADOR
       </button>
     </div>
@@ -170,14 +170,35 @@
     const PHONE_E164 = "542234563494";
     const MESSAGE = "Hola, vengo desde el anuncio. Quiero un usuario y reclamar el bono del 100%.";
 
-    document.getElementById("waBtn").addEventListener("click", function(){
-      if(typeof window.fbq === "function"){
-        window.fbq('track','Contact',{ channel:'whatsapp' });
-      }
-      setTimeout(() => {
-        window.location.href =
-          "https://wa.me/" + PHONE_E164 + "?text=" + encodeURIComponent(MESSAGE);
-      }, 250);
+    const btn = document.getElementById("waBtn");
+    let clicked = false;
+
+    function goWhatsApp(){
+      window.location.href =
+        "https://wa.me/" + PHONE_E164 + "?text=" + encodeURIComponent(MESSAGE);
+    }
+
+    btn.addEventListener("click", function(){
+      if(clicked) return;              // evita doble evento/doble redirección
+      clicked = true;
+      btn.disabled = true;
+      btn.style.opacity = "0.85";
+
+      // Dispara Contact en el click (lo que necesitás para la conversión)
+      try{
+        if(typeof window.fbq === "function"){
+          window.fbq('track','Contact', { channel:'whatsapp' });
+
+          // Opcional (no molesta): Lead para tener alternativa de optimización
+          // window.fbq('track','Lead', { channel:'whatsapp' });
+        }
+      }catch(e){ /* no-op */ }
+
+      // Pequeño delay para que el pixel alcance a enviar el evento
+      setTimeout(goWhatsApp, 250);
+
+      // Fallback: por si el navegador bloquea algo, igual redirige
+      setTimeout(goWhatsApp, 1200);
     });
   </script>
 
