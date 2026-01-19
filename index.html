@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Plataforma Verificada</title>
   <meta name="description" content="Acceso VIP por WhatsApp. Atención 24/7.">
+  <meta name="robots" content="noindex,nofollow">
 
   <!-- Meta Pixel Code -->
   <script>
@@ -24,13 +25,13 @@
       s.parentNode.insertBefore(t,s);
     }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
 
-    fbq('init', '1479248860230971');
+    fbq('init', '869130839351005');
     fbq('track', 'PageView');
   </script>
 
   <noscript>
     <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=1479248860230971&ev=PageView&noscript=1"/>
+      src="https://www.facebook.com/tr?id=869130839351005&ev=PageView&noscript=1"/>
   </noscript>
   <!-- End Meta Pixel Code -->
 
@@ -143,7 +144,6 @@
 </head>
 
 <body>
-
   <div class="wrap">
     <div class="logo">
       PLATAFORMA<br>VERIFICADA
@@ -167,40 +167,31 @@
   </div>
 
   <script>
-    const PHONE_E164 = "5492236751113";
-    const MESSAGE = "Hola, vengo desde el anuncio. Quiero un usuario y reclamar el bono del 100%.";
+  const PHONE_E164 = "5492236751113";
+  const MESSAGE = "Hola, vengo desde el anuncio. Quiero un usuario y reclamar el bono del 100%.";
 
-    const btn = document.getElementById("waBtn");
-    let clicked = false;
+  const btn = document.getElementById("waBtn");
+  let fired = false;
 
-    function goWhatsApp(){
-      window.location.href =
-        "https://wa.me/" + PHONE_E164 + "?text=" + encodeURIComponent(MESSAGE);
-    }
+  function goWhatsApp(){
+    const url = "https://wa.me/" + PHONE_E164 + "?text=" + encodeURIComponent(MESSAGE);
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
 
-    btn.addEventListener("click", function(){
-      if(clicked) return;              // evita doble evento/doble redirección
-      clicked = true;
-      btn.disabled = true;
-      btn.style.opacity = "0.85";
+  btn.addEventListener("click", function(){
+    if (fired) return;
+    fired = true;
 
-      // Dispara Contact en el click (lo que necesitás para la conversión)
-      try{
-        if(typeof window.fbq === "function"){
-          window.fbq('track','Contact', { channel:'whatsapp' });
+    btn.disabled = true;
+    btn.style.opacity = "0.85";
 
-          // Opcional (no molesta): Lead para tener alternativa de optimización
-          // window.fbq('track','Lead', { channel:'whatsapp' });
-        }
-      }catch(e){ /* no-op */ }
+    try {
+      if (typeof fbq === "function") {
+        fbq('track', 'Contact', { channel: 'whatsapp' });
+        fbq('track', 'Purchase', { currency: 'USD', value: 1.00 });
+      }
+    } catch(e){}
 
-      // Pequeño delay para que el pixel alcance a enviar el evento
-      setTimeout(goWhatsApp, 250);
-
-      // Fallback: por si el navegador bloquea algo, igual redirige
-      setTimeout(goWhatsApp, 1200);
-    });
-  </script>
-
-</body>
-</html>
+    setTimeout(goWhatsApp, 250);
+  });
+</script>
