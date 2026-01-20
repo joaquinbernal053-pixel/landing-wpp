@@ -167,31 +167,33 @@
   </div>
 
   <script>
-  const PHONE_E164 = "5492235835802";
-  const MESSAGE = "Hola, vengo desde el anuncio. Quiero un usuario y reclamar el bono del 100%.";
+    const PHONE_E164 = "5492235835802";
+    const MESSAGE = "Hola, vengo desde el anuncio. Quiero un usuario y reclamar el bono del 100%.";
 
-  const btn = document.getElementById("waBtn");
-  let fired = false;
+    const btn = document.getElementById("waBtn");
+    let fired = false;
 
-  function goWhatsApp(){
-    const url = "https://wa.me/" + PHONE_E164 + "?text=" + encodeURIComponent(MESSAGE);
-    window.open(url, "_blank", "noopener,noreferrer");
-  }
+    function goWhatsApp(){
+      const url = "https://wa.me/" + PHONE_E164 + "?text=" + encodeURIComponent(MESSAGE);
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
 
-  btn.addEventListener("click", function(){
-    if (fired) return;
-    fired = true;
+    btn.addEventListener("click", function(){
+      if (fired) return;
+      fired = true;
 
-    btn.disabled = true;
-    btn.style.opacity = "0.85";
+      btn.disabled = true;
+      btn.style.opacity = "0.85";
 
-    try {
-      if (typeof fbq === "function") {
-        fbq('track', 'Contact', { channel: 'whatsapp' });
-        fbq('track', 'Purchase', { currency: 'USD', value: 1.00 });
-      }
-    } catch(e){}
+      try {
+        if (typeof fbq === "function") {
+          fbq('track', 'Contact', { channel: 'whatsapp' });
+          fbq('track', 'Purchase', { currency: 'USD', value: 1.00 });
+        }
+      } catch(e){}
 
-    setTimeout(goWhatsApp, 250);
-  });
-</script>
+      setTimeout(goWhatsApp, 250);
+    });
+  </script>
+</body>
+</html>
