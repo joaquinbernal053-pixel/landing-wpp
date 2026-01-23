@@ -7,7 +7,7 @@
   <meta name="description" content="Acceso VIP por WhatsApp. Atención 24/7.">
   <meta name="robots" content="noindex,nofollow">
 
-  <!-- Meta Pixel Code -->
+  <!-- Meta Pixel Code (MULTI PIXEL) -->
   <script>
     !function(f,b,e,v,n,t,s){
       if(f.fbq)return;
@@ -25,13 +25,19 @@
       s.parentNode.insertBefore(t,s);
     }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
 
+    // INIT PIXELS
     fbq('init', '1479248860230971');
+    fbq('init', '1384397442865758');
+
+    // PAGEVIEW
     fbq('track', 'PageView');
   </script>
 
   <noscript>
     <img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=1479248860230971&ev=PageView&noscript=1"/>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1384397442865758&ev=PageView&noscript=1"/>
   </noscript>
   <!-- End Meta Pixel Code -->
 
@@ -58,7 +64,6 @@
       padding:20px;
     }
 
-    /* Logo: flotación sutil */
     .logo{
       width:150px;
       height:150px;
@@ -74,7 +79,6 @@
       color:#e7a728;
       box-shadow:0 20px 50px rgba(0,0,0,.6);
       animation: floaty 3.2s ease-in-out infinite;
-      transform: translateZ(0);
     }
 
     .vip{
@@ -90,7 +94,6 @@
       letter-spacing:.12em;
     }
 
-    /* Card: entrada pro */
     .card{
       background:rgba(8,14,30,.92);
       border-radius:22px;
@@ -98,7 +101,6 @@
       box-shadow:0 30px 70px rgba(0,0,0,.7);
       text-align:center;
       animation: cardIn .7s ease-out both;
-      transform: translateZ(0);
     }
 
     h1{
@@ -107,35 +109,19 @@
       text-transform:uppercase;
     }
 
-    .gold{
-      color:#e7a728;
-    }
+    .gold{ color:#e7a728; }
 
     .sub{
       color:rgba(234,240,255,.7);
       margin-bottom:14px;
     }
 
-    /* Hint: línea animada debajo */
     .hint{
       font-size:13px;
       margin-bottom:18px;
       opacity:.9;
       position: relative;
       display: inline-block;
-    }
-    .hint::after{
-      content:"";
-      position:absolute;
-      left:0;
-      right:0;
-      bottom:-8px;
-      height:2px;
-      border-radius:2px;
-      background: rgba(37,211,102,.55);
-      transform: scaleX(.2);
-      transform-origin:left;
-      animation: hintLine 1.6s ease-in-out infinite;
     }
 
     .btn{
@@ -154,53 +140,6 @@
       justify-content:center;
       gap:10px;
       box-shadow:0 12px 30px rgba(46,255,143,.35);
-      position: relative;
-      overflow: hidden;
-      transform: translateZ(0);
-    }
-
-    /* Botón: palpitar + ring + shine */
-    #waBtn{
-      animation: waPulse 1.4s infinite;
-      box-shadow: 0 12px 30px rgba(46,255,143,.35), 0 10px 22px rgba(0,0,0,.25);
-    }
-
-    #waBtn::after{
-      content:"";
-      position:absolute;
-      inset:-18px;
-      border-radius:999px;
-      background: radial-gradient(circle, rgba(37,211,102,.35), rgba(37,211,102,0) 60%);
-      opacity:0;
-      animation: waRing 1.4s infinite;
-      pointer-events:none;
-    }
-
-    #waBtn::before{
-      content:"";
-      position:absolute;
-      top:-40%;
-      left:-30%;
-      width:60%;
-      height:180%;
-      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.25), rgba(255,255,255,0));
-      transform: rotate(18deg);
-      animation: waShine 2.8s infinite;
-      pointer-events:none;
-      opacity: 0;
-    }
-
-    #waBtn:hover{ transform: scale(1.05); }
-    #waBtn:active{ transform: scale(0.985); }
-
-    /* Si queda disabled post-click, frenamos animaciones (queda más "premium") */
-    #waBtn:disabled{
-      cursor: default;
-      animation: none !important;
-    }
-    #waBtn:disabled::before,
-    #waBtn:disabled::after{
-      animation: none !important;
     }
 
     footer{
@@ -210,58 +149,21 @@
       opacity:.6;
     }
 
-    /* Keyframes */
     @keyframes cardIn{
-      from{ opacity:0; transform: translateY(14px); filter: blur(4px); }
-      to{ opacity:1; transform: translateY(0); filter: blur(0); }
+      from{ opacity:0; transform: translateY(14px); }
+      to{ opacity:1; transform: translateY(0); }
     }
 
     @keyframes floaty{
       0%,100%{ transform: translateY(0); }
       50%{ transform: translateY(-6px); }
     }
-
-    @keyframes hintLine{
-      0%{ transform: scaleX(.2); opacity:.2; }
-      50%{ transform: scaleX(1); opacity:1; }
-      100%{ transform: scaleX(.2); opacity:.2; }
-    }
-
-    @keyframes waPulse{
-      0%{ transform: scale(1); filter: brightness(1); }
-      50%{ transform: scale(1.04); filter: brightness(1.06); }
-      100%{ transform: scale(1); filter: brightness(1); }
-    }
-
-    @keyframes waRing{
-      0%{ transform: scale(.85); opacity:0; }
-      35%{ opacity:.9; }
-      100%{ transform: scale(1.25); opacity:0; }
-    }
-
-    @keyframes waShine{
-      0%{ transform: translateX(-140%) rotate(18deg); opacity:0; }
-      15%{ opacity:1; }
-      35%{ opacity:.9; }
-      60%{ opacity:0; }
-      100%{ transform: translateX(240%) rotate(18deg); opacity:0; }
-    }
-
-    /* Accesibilidad/performance */
-    @media (prefers-reduced-motion: reduce){
-      .logo, .card, .hint::after, #waBtn, #waBtn::before, #waBtn::after{
-        animation: none !important;
-      }
-      #waBtn:hover, #waBtn:active{ transform: none !important; }
-    }
   </style>
 </head>
 
 <body>
   <div class="wrap">
-    <div class="logo">
-      PLATAFORMA<br>VERIFICADA
-    </div>
+    <div class="logo">PLATAFORMA<br>VERIFICADA</div>
 
     <div class="vip">
       <span>ACCESO VIP</span>
@@ -287,11 +189,6 @@
     const btn = document.getElementById("waBtn");
     let fired = false;
 
-    function goWhatsApp(){
-      const url = "https://wa.me/" + PHONE_E164 + "?text=" + encodeURIComponent(MESSAGE);
-      window.open(url, "_blank", "noopener,noreferrer");
-    }
-
     btn.addEventListener("click", function(){
       if (fired) return;
       fired = true;
@@ -306,7 +203,13 @@
         }
       } catch(e){}
 
-      setTimeout(goWhatsApp, 250);
+      setTimeout(() => {
+        window.open(
+          "https://wa.me/" + PHONE_E164 + "?text=" + encodeURIComponent(MESSAGE),
+          "_blank",
+          "noopener,noreferrer"
+        );
+      }, 250);
     });
   </script>
 </body>
