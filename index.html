@@ -19,7 +19,7 @@
       n.loaded=!0;
       n.version='2.0';
       n.queue=[];
-      t=b.createElement(e); t.async=!0;
+      t=b.createElement(e);t.async=!0;
       t.src=v;
       s=b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t,s);
@@ -34,126 +34,33 @@
       src="https://www.facebook.com/tr?id=869130839351005&ev=PageView&noscript=1"/>
   </noscript>
   <!-- End Meta Pixel Code -->
-
-  <style>
-    *{ box-sizing:border-box }
-    body{
-      margin:0;
-      min-height:100vh;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background:
-        linear-gradient(rgba(5,8,20,.85), rgba(5,8,20,.85)),
-        url("bg-slots.png") center / cover no-repeat;
-      display:flex;
-      justify-content:center;
-      align-items:flex-start;
-      padding-top:40px;
-      color:#EAF0FF;
-    }
-    .wrap{ width:100%; max-width:420px; padding:20px; }
-    .logo{
-      width:150px; height:150px; margin:0 auto 14px;
-      border-radius:50%;
-      background:radial-gradient(circle at top, #2a2a2a, #000);
-      display:flex; align-items:center; justify-content:center;
-      text-align:center; font-weight:900; letter-spacing:.12em;
-      color:#e7a728;
-      box-shadow:0 20px 50px rgba(0,0,0,.6);
-      animation: floaty 3.2s ease-in-out infinite;
-    }
-    .vip{ text-align:center; margin-bottom:16px; }
-    .vip span{
-      border:1px solid rgba(255,200,120,.45);
-      padding:10px 22px;
-      border-radius:999px;
-      font-size:12px;
-      letter-spacing:.12em;
-    }
-    .card{
-      background:rgba(8,14,30,.92);
-      border-radius:22px;
-      padding:24px 20px;
-      box-shadow:0 30px 70px rgba(0,0,0,.7);
-      text-align:center;
-      animation: cardIn .7s ease-out both;
-    }
-    h1{ margin:0 0 10px; font-size:28px; text-transform:uppercase; }
-    .gold{ color:#e7a728; }
-    .sub{ color:rgba(234,240,255,.7); margin-bottom:14px; }
-    .hint{ font-size:13px; margin-bottom:18px; opacity:.9; }
-    .btn{
-      width:100%; border:none; border-radius:18px; padding:16px;
-      font-weight:900; letter-spacing:.05em; font-size:15px;
-      cursor:pointer;
-      background:linear-gradient(180deg,#2eff8f,#1fbf63);
-      color:#062c16;
-      display:flex; align-items:center; justify-content:center; gap:10px;
-      box-shadow:0 12px 30px rgba(46,255,143,.35);
-    }
-    footer{ text-align:center; margin-top:14px; font-size:12px; opacity:.6; }
-    @keyframes cardIn{
-      from{ opacity:0; transform: translateY(14px); }
-      to{ opacity:1; transform: translateY(0); }
-    }
-    @keyframes floaty{
-      0%,100%{ transform: translateY(0); }
-      50%{ transform: translateY(-6px); }
-    }
-  </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="logo">PLATAFORMA<br>VERIFICADA</div>
 
-    <div class="vip">
-      <span>ACCESO VIP</span>
-    </div>
+<button id="waBtn">WHATSAPP</button>
 
-    <div class="card">
-      <h1>OBTENÉ UN <span class="gold">100%</span><br>ADICIONAL</h1>
-      <p class="sub">Acceso inmediato por WhatsApp.</p>
-      <p class="hint">Tocá el botón verde para hablar con un operador.</p>
+<script>
+  const PHONE_E164 = "5492236708293";
+  const MESSAGE = "Hola, quiero mas informacion y reclamar la bonificacion.";
+  const btn = document.getElementById("waBtn");
 
-      <button id="waBtn" class="btn" type="button">
-        💬 WHATSAPP · HABLÁ CON UN OPERADOR
-      </button>
-    </div>
+  btn.addEventListener("click", function () {
 
-    <footer>+18 · Jugá con responsabilidad</footer>
-  </div>
+    if (typeof fbq === "function") {
+      fbq('track', 'Purchase', {
+        currency: 'USD',
+        value: 1.00
+      });
+    }
 
-  <script>
-    const PHONE_E164 = "5492236708293";
-    const MESSAGE = "Hola, quiero mas informacion y reclamar la bonificacion.";
+    // Delay REAL para que Meta envíe el evento
+    setTimeout(function () {
+      window.location.href =
+        "https://wa.me/" + PHONE_E164 + "?text=" + encodeURIComponent(MESSAGE);
+    }, 700);
+  });
+</script>
 
-    const btn = document.getElementById("waBtn");
-    let fired = false;
-
-    btn.addEventListener("click", function(){
-      if (fired) return;
-      fired = true;
-
-      btn.disabled = true;
-      btn.style.opacity = "0.88";
-
-      try {
-        if (typeof fbq === "function") {
-          fbq('track', 'Purchase', {
-            currency: 'USD',
-            value: 1.00
-          });
-        }
-      } catch(e){}
-
-      setTimeout(() => {
-        window.open(
-          "https://wa.me/" + PHONE_E164 + "?text=" + encodeURIComponent(MESSAGE),
-          "_blank",
-          "noopener,noreferrer"
-        );
-      }, 250);
-    });
-  </script>
 </body>
 </html>
