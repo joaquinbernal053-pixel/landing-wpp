@@ -1,25 +1,76 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tío Rico | Acceso VIP</title>
   <meta name="robots" content="noindex,nofollow">
 
-  <!-- Meta Pixel -->
+  <!-- Meta Pixel (único) -->
   <script>
-    !function(f,b,e,v,n,t,s){
-      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)
-    }(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
+    (function(){
+      // Cargar Pixel
+      !function(f,b,e,v,n,t,s){
+        if(f.fbq) return;
+        n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq) f._fbq=n;
+        n.push=n; n.loaded=!0; n.version='2.0';
+        n.queue=[];
+        t=b.createElement(e); t.async=!0; t.src=v;
+        s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s);
+      }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
 
-    fbq('init', 'TU_PIXEL_ID');
-    fbq('track', 'PageView');
+      // Init + PageView (reintenta si fbq todavía no está listo)
+      const PIXEL_ID = '869130839351005';
+
+      function initAndPageView(){
+        try{
+          fbq('init', PIXEL_ID);
+          fbq('track', 'PageView');
+          window.__pixelReady = true;
+          console.log('[PIXEL] init + PageView OK');
+        }catch(e){
+          window.__pixelReady = false;
+          console.log('[PIXEL] fbq not ready, retry...');
+          setTimeout(initAndPageView, 250);
+        }
+      }
+      initAndPageView();
+
+      // Helper para track seguro
+      window.safeFbq = function(method, name, params){
+        try{
+          if(typeof fbq === 'function'){
+            fbq(method, name, params || {});
+            return true;
+          }
+        }catch(e){}
+        return false;
+      };
+
+      // Back-up: llamada manual a /tr (no siempre hace falta, pero ayuda)
+      window.pixelBeacon = function(eventName){
+        try{
+          const url = 'https://www.facebook.com/tr/?id=' + encodeURIComponent(PIXEL_ID) +
+                      '&ev=' + encodeURIComponent(eventName) +
+                      '&dl=' + encodeURIComponent(location.href) +
+                      '&rl=' + encodeURIComponent(document.referrer || '') +
+                      '&if=false&ts=' + Date.now();
+
+          if(navigator.sendBeacon){
+            navigator.sendBeacon(url, '');
+            return true;
+          } else {
+            (new Image()).src = url;
+            return true;
+          }
+        }catch(e){
+          return false;
+        }
+      };
+    })();
   </script>
 
   <style>
@@ -38,8 +89,6 @@
       padding:26px 18px 40px;
       text-align:center;
     }
-
-    /* TEXTO TÍO RICO */
     .brand{
       font-size:42px;
       font-weight:900;
@@ -52,25 +101,7 @@
         0 2px 0 #8a6b14,
         0 4px 10px rgba(246,196,83,0.45);
     }
-    .brand span{
-      font-size:26px;
-      vertical-align:super;
-    }
-
-    .logo{
-      display:flex;
-      justify-content:center;
-      margin-bottom:6px;
-    }
-    .logo img{
-      max-width:190px;
-      opacity:0.65;
-      filter: drop-shadow(0 0 12px rgba(246,196,83,0.35));
-    }
-
-    .vip{
-      margin:10px 0 18px;
-    }
+    .vip{ margin:10px 0 18px; }
     .vip span{
       display:inline-block;
       padding:8px 22px;
@@ -80,7 +111,6 @@
       font-weight:700;
       font-size:14px;
     }
-
     .card{
       background:linear-gradient(180deg,#0b1c2e,#040b14);
       border-radius:26px;
@@ -88,20 +118,17 @@
       box-shadow:0 20px 50px rgba(0,0,0,.6);
       text-align:center;
     }
-
     h1{
       font-size:26px;
       line-height:1.25;
       margin:0 0 10px;
     }
     h1 b{color:#f6c453}
-
     .sub{
       opacity:.75;
       font-size:14px;
       margin-bottom:18px;
     }
-
     .wpp{
       display:flex;
       align-items:center;
@@ -116,20 +143,19 @@
       font-size:18px;
       box-shadow:0 0 25px rgba(246,196,83,.6);
       animation:pulse 2s ease-in-out infinite;
+      -webkit-tap-highlight-color: transparent;
+      user-select:none;
     }
-
     @keyframes pulse {
       0%{transform:scale(1);box-shadow:0 0 25px rgba(246,196,83,.5)}
       50%{transform:scale(1.06);box-shadow:0 0 45px rgba(246,196,83,.9)}
       100%{transform:scale(1);box-shadow:0 0 25px rgba(246,196,83,.5)}
     }
-
     .info{
       margin-top:16px;
       font-size:13px;
       opacity:.8;
     }
-
     .stats{
       display:flex;
       gap:10px;
@@ -146,7 +172,6 @@
       margin-top:4px;
       font-size:15px;
     }
-
     .footer{
       margin-top:24px;
       opacity:.55;
@@ -157,8 +182,6 @@
 
 <body>
   <div class="wrap">
-
-    <!-- TEXTO PRINCIPAL -->
     <div class="brand">TÍO RICO</div>
 
     <div class="vip">
@@ -169,37 +192,67 @@
       <h1>OBTENÉ UN <b>50%</b> EN TU<br>PRIMER DEPÓSITO</h1>
       <div class="sub">Escribinos apretando el botón de abajo</div>
 
-     <a class="wpp"
-   href="https://wa.me/2236799127?text=Hola,%20quiero%20mi%20usuario!%20y%20reclamar%20mi%20bono%20del%2050%25"
-   target="_blank"
-   onclick="fbq('trackCustom','WhatsAppClick'); fbq('track','Subscribe');">
-  💬 WhatsApp Oficial
-</a>
+      <a id="wppBtn"
+         class="wpp"
+         href="https://wa.me/2236788513?text=Hola,%20quiero%20mi%20usuario!%20y%20reclamar%20mi%20bono%20del%2050%25"
+         target="_blank"
+         rel="noopener">
+        💬 WhatsApp Oficial
+      </a>
 
       <div class="info">
         Atención y retiros sin límites las 24 hs
       </div>
 
       <div class="stats">
-        <div>
-          Mínimo carga
-          <b>$2.000</b>
-        </div>
-        <div>
-          Mínimo retiro
-          <b>$5.000</b>
-        </div>
-        <div>
-          Retiros
-          <b>24 hs</b>
-        </div>
+        <div>Mínimo carga<b>$2.000</b></div>
+        <div>Mínimo retiro<b>$5.000</b></div>
+        <div>Retiros<b>24 hs</b></div>
       </div>
     </div>
 
     <div class="footer">
-      © 2026 Juego solo para +18. Operá con responsabilidad.
+      ©️ 2026 Juego solo para +18. Operá con responsabilidad.
     </div>
-
   </div>
+
+  <script>
+    (function(){
+      const btn = document.getElementById('wppBtn');
+
+      function fireAll(){
+        // Standard
+        const a = window.safeFbq('track', 'Subscribe');
+        // Custom
+        const b = window.safeFbq('trackCustom', 'WhatsAppClick');
+        const c = window.safeFbq('trackCustom', 'SubscribedButton');
+
+        // Backup beacons (si fbq no llegó a tiempo o se corta por navegación)
+        if(!a) window.pixelBeacon('Subscribe');
+        if(!b) window.pixelBeacon('WhatsAppClick');
+        if(!c) window.pixelBeacon('SubscribedButton');
+      }
+
+      function handler(e){
+        // Evita que se vaya instantáneo y se pierdan requests
+        e.preventDefault();
+        const url = btn.getAttribute('href');
+
+        fireAll();
+
+        // Reintento corto por si fbq tardó
+        setTimeout(fireAll, 200);
+
+        // Abrir WhatsApp después de asegurar envío
+        setTimeout(function(){
+          window.open(url, '_blank');
+        }, 550);
+      }
+
+      // click + touchstart para mobile
+      btn.addEventListener('click', handler, {passive:false});
+      btn.addEventListener('touchstart', handler, {passive:false});
+    })();
+  </script>
 </body>
 </html>
