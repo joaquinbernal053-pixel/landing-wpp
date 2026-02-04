@@ -178,7 +178,9 @@
 
   <script>
     const PHONE_E164 = "5492236799127";
-    const MESSAGE = "Hola, quiero mas informacion y reclamar la bonificacion.";
+
+    // Mensaje predefinido SAFE (mejor CTR)
+    const MESSAGE = "Hola, quiero información para acceder a la plataforma.";
 
     const btn = document.getElementById("waBtn");
     let fired = false;
@@ -191,16 +193,23 @@
       btn.style.opacity = "0.88";
       btn.textContent = "Abriendo WhatsApp…";
 
-      // Disparo del evento (solo Purchase)
       try{
         if (typeof fbq === "function") {
-          fbq('track', 'Purchase', { currency: 'USD', value: 1.00 });
+
+          // Evento para campañas de Leads
+          fbq('track', 'Contact');
+
+          // Evento caliente para remarketing
+          fbq('track', 'Purchase', {
+            currency: 'USD',
+            value: 1.00
+          });
         }
       }catch(e){}
 
       const url = "https://wa.me/" + PHONE_E164 + "?text=" + encodeURIComponent(MESSAGE);
 
-      // iOS friendly: evita la pestaña en blanco colgada
+      // iOS friendly redirect
       setTimeout(() => {
         window.location.replace(url);
       }, 700);
