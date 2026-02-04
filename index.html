@@ -3,217 +3,200 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plataforma Verificada</title>
-  <meta name="description" content="Acceso VIP por WhatsApp. Atención 24/7.">
+  <title>Tío Rico | Acceso VIP</title>
   <meta name="robots" content="noindex,nofollow">
 
-  <!-- Meta Pixel Code -->
+  <!-- Meta Pixel -->
   <script>
     !function(f,b,e,v,n,t,s){
-      if(f.fbq)return;
-      n=f.fbq=function(){
-        n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments)
-      };
-      if(!f._fbq)f._fbq=n;
-      n.push=n;
-      n.loaded=!0;
-      n.version='2.0';
-      n.queue=[];
-      t=b.createElement(e); t.async=!0;
-      t.src=v;
-      s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s);
-    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    }(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
 
-    fbq('init', '869130839351005');
+    fbq('init', 'TU_PIXEL_ID');
     fbq('track', 'PageView');
   </script>
 
-  <noscript>
-    <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=869130839351005&ev=PageView&noscript=1"/>
-  </noscript>
-  <!-- End Meta Pixel Code -->
-
   <style>
-    *{ box-sizing:border-box }
-
+    *{box-sizing:border-box}
     body{
       margin:0;
-      min-height:100vh;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background:
-        linear-gradient(rgba(5,8,20,.85), rgba(5,8,20,.85)),
-        url("bg-slots.png") center / cover no-repeat;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #b8860b 0%, #040404 45%);
+      color:#fff;
       display:flex;
       justify-content:center;
-      align-items:flex-start;
-      padding-top:40px;
-      color:#EAF0FF;
     }
-
     .wrap{
       width:100%;
       max-width:420px;
-      padding:20px;
+      padding:26px 18px 40px;
     }
-
     .logo{
-      width:150px;
-      height:150px;
-      margin:0 auto 14px;
-      border-radius:50%;
-      background:radial-gradient(circle at top, #2a2a2a, #000);
       display:flex;
-      align-items:center;
       justify-content:center;
-      text-align:center;
-      font-weight:900;
-      letter-spacing:.12em;
-      color:#e7a728;
-      box-shadow:0 20px 50px rgba(0,0,0,.6);
-      animation: floaty 3.2s ease-in-out infinite;
+      margin-bottom:10px;
     }
-
+    .logo img{
+      max-width:210px;
+      height:auto;
+    }
     .vip{
       text-align:center;
-      margin-bottom:16px;
-    }
-
-    .vip span{
-      border:1px solid rgba(255,200,120,.45);
-      padding:10px 22px;
-      border-radius:999px;
-      font-size:12px;
-      letter-spacing:.12em;
-    }
-
-    .card{
-      background:rgba(8,14,30,.92);
-      border-radius:22px;
-      padding:24px 20px;
-      box-shadow:0 30px 70px rgba(0,0,0,.7);
-      text-align:center;
-      animation: cardIn .7s ease-out both;
-    }
-
-    h1{
-      margin:0 0 10px;
-      font-size:28px;
-      text-transform:uppercase;
-    }
-
-    .gold{ color:#e7a728; }
-
-    .sub{
-      color:rgba(234,240,255,.7);
-      margin-bottom:14px;
-    }
-
-    .hint{
-      font-size:13px;
       margin-bottom:18px;
-      opacity:.9;
+    }
+    .vip span{
+      display:inline-block;
+      padding:8px 22px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#f6c453,#b8860b);
+      color:#111;
+      font-weight:700;
+      font-size:14px;
+    }
+    .card{
+      background:linear-gradient(180deg,#0b1c2e,#040b14);
+      border-radius:26px;
+      padding:26px 20px;
+      box-shadow:0 20px 50px rgba(0,0,0,.6);
+      text-align:center;
+    }
+    h1{
+      font-size:26px;
+      line-height:1.25;
+      margin:0 0 10px;
+    }
+    h1 b{color:#f6c453}
+    .sub{
+      opacity:.75;
+      font-size:14px;
+      margin-bottom:18px;
     }
 
-    .btn{
-      width:100%;
-      border:none;
-      border-radius:18px;
-      padding:16px;
-      font-weight:900;
-      letter-spacing:.05em;
-      font-size:15px;
-      cursor:pointer;
-      background:linear-gradient(180deg,#2eff8f,#1fbf63);
-      color:#062c16;
+    /* BOTÓN WHATSAPP */
+    .wpp{
       display:flex;
       align-items:center;
       justify-content:center;
       gap:10px;
-      box-shadow:0 12px 30px rgba(46,255,143,.35);
-      transition: transform .08s ease, opacity .2s ease;
+      background:linear-gradient(135deg,#f6c453,#e0a800);
+      color:#111;
+      text-decoration:none;
+      font-weight:800;
+      border-radius:999px;
+      padding:16px;
+      font-size:18px;
+      box-shadow:0 0 25px rgba(246,196,83,.6);
+      animation: pulse 2s ease-in-out infinite;
+      -webkit-tap-highlight-color: transparent;
+      user-select:none;
     }
-    .btn:active{ transform: scale(.99); }
+    .wpp:active{
+      transform: scale(0.98);
+    }
 
-    footer{
+    /* EFECTO BOMBEO */
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 25px rgba(246,196,83,.5);
+      }
+      50% {
+        transform: scale(1.06);
+        box-shadow: 0 0 45px rgba(246,196,83,.9);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 25px rgba(246,196,83,.5);
+      }
+    }
+
+    .info{
+      margin-top:16px;
+      font-size:13px;
+      opacity:.8;
+    }
+    .stats{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      background:#0b1c2e;
+      border-radius:18px;
+      margin-top:18px;
+      padding:14px 10px;
       text-align:center;
-      margin-top:14px;
+      font-size:13px;
+    }
+    .stats > div{
+      flex:1;
+    }
+    .stats b{
+      color:#f6c453;
+      display:block;
+      margin-top:4px;
+      font-size:15px;
+    }
+    .footer{
+      margin-top:24px;
+      text-align:center;
+      opacity:.55;
       font-size:12px;
-      opacity:.6;
-    }
-
-    @keyframes cardIn{
-      from{ opacity:0; transform: translateY(14px); }
-      to{ opacity:1; transform: translateY(0); }
-    }
-
-    @keyframes floaty{
-      0%,100%{ transform: translateY(0); }
-      50%{ transform: translateY(-6px); }
     }
   </style>
 </head>
 
 <body>
   <div class="wrap">
-    <div class="logo">PLATAFORMA<br>VERIFICADA</div>
+
+    <div class="logo">
+      <img src="/logo.png" alt="Tío Rico Casino">
+    </div>
 
     <div class="vip">
       <span>ACCESO VIP</span>
     </div>
 
     <div class="card">
-      <h1>OBTENÉ UN <span class="gold">100%</span><br>ADICIONAL</h1>
-      <p class="sub">Acceso inmediato por WhatsApp.</p>
-      <p class="hint">Tocá el botón verde para hablar con un operador.</p>
+      <h1>OBTENÉ UN <b>50%</b> EN TU<br>PRIMER DEPÓSITO</h1>
+      <div class="sub">Escribinos apretando el botón de abajo</div>
 
-      <button id="waBtn" class="btn" type="button">
-        💬 WHATSAPP · HABLÁ CON UN OPERADOR
-      </button>
+      <!-- SOLO EVENTOS: WhatsAppClick (custom) + Subscribe -->
+      <a class="wpp"
+         href="https://wa.me/TU_NUMERO_WPP?text=Quiero%20acceso%20VIP"
+         target="_blank"
+         onclick="fbq('trackCustom','WhatsAppClick'); fbq('track','Subscribe');">
+        💬 WhatsApp Oficial
+      </a>
+
+      <div class="info">
+        Atención y retiros sin límites las 24 hs
+      </div>
+
+      <div class="stats">
+        <div>
+          Mínimo carga
+          <b>$2.000</b>
+        </div>
+        <div>
+          Mínimo retiro
+          <b>$5.000</b>
+        </div>
+        <div>
+          Retiros
+          <b>24 hs</b>
+        </div>
+      </div>
     </div>
 
-    <footer>+18 · Jugá con responsabilidad</footer>
+    <div class="footer">
+      © 2026 Juego solo para +18. Operá con responsabilidad.
+    </div>
+
   </div>
-
-  <script>
-    const PHONE_E164 = "5492236799127";
-
-    // Mensaje predefinido SAFE (mejor CTR)
-    const MESSAGE = "Hola 👋 vengo desde el anuncio y quiero acceso a la plataforma.";
-
-    const btn = document.getElementById("waBtn");
-    let fired = false;
-
-    btn.addEventListener("click", function(){
-      if (fired) return;
-      fired = true;
-
-      btn.disabled = true;
-      btn.style.opacity = "0.88";
-      btn.textContent = "Abriendo WhatsApp…";
-
-      try{
-        if (typeof fbq === "function") {
-
-          // Evento para campañas de Leads
-          fbq('track', 'Contact');
-
-          // Evento caliente para remarketing
-          fbq('track', 'Purchase', {
-            currency: 'USD',
-            value: 1.00
-          });
-        }
-      }catch(e){}
-
-      const url = "https://wa.me/" + PHONE_E164 + "?text=" + encodeURIComponent(MESSAGE);
-
-      // iOS friendly redirect
-      setTimeout(() => {
-        window.location.replace(url);
-      }, 700);
-    });
-  </script>
 </body>
 </html>
