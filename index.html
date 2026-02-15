@@ -3,8 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tío Rico | Acceso VIP</title>
-  <meta name="robots" content="noindex,nofollow">
+  <title>Selecttech | Agencia de Marketing Digital Performance</title>
+  <meta name="description" content="Selecttech: performance marketing, creatividades, tracking y automatizaciones para escalar tu negocio con métricas reales." />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Selecttech | Marketing Digital Performance" />
+  <meta property="og:description" content="Estrategia, anuncios, creatividades y tracking para crecer con números." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
 
   <!-- Meta Pixel Code (ÚNICO) -->
   <script>
@@ -21,111 +28,388 @@
       s.parentNode.insertBefore(t,s);
     }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
 
+    // ✅ Reemplazá por tu Pixel ID si cambia
     fbq('init', '25971552335789567');
     fbq('track', 'PageView');
   </script>
-
   <noscript>
     <img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=25971552335789567&ev=PageView&noscript=1"/>
   </noscript>
 
   <style>
+    :root{
+      --bg0:#05070d;
+      --bg1:#070b18;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.08);
+      --border: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.68);
+      --muted2: rgba(255,255,255,.55);
+      --brand1:#7c3aed;   /* violeta */
+      --brand2:#22d3ee;   /* cyan */
+      --brand3:#a78bfa;   /* lila */
+      --ok:#10b981;
+      --shadow: 0 18px 55px rgba(0,0,0,.55);
+      --radius: 22px;
+      --radius2: 28px;
+    }
+
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top, #b8860b 0%, #040404 45%);
-      color:#fff;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(900px 520px at 20% 10%, rgba(124,58,237,.35), transparent 55%),
+        radial-gradient(780px 520px at 80% 0%, rgba(34,211,238,.25), transparent 55%),
+        radial-gradient(900px 620px at 50% 100%, rgba(167,139,250,.18), transparent 65%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      color:var(--text);
       display:flex;
       justify-content:center;
     }
+
+    a{color:inherit}
     .wrap{
       width:100%;
-      max-width:420px;
-      padding:26px 18px 40px;
-      text-align:center;
+      max-width:1040px;
+      padding:18px 16px 64px;
     }
+
+    /* Top bar */
+    .top{
+      position:sticky;
+      top:0;
+      z-index:20;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: rgba(5,7,13,.55);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius: 999px;
+      padding:10px 12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin:10px auto 16px;
+      box-shadow: 0 10px 35px rgba(0,0,0,.35);
+    }
+
     .brand{
-      font-size:42px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width: 180px;
+    }
+    .logo{
+      width:34px;height:34px;border-radius:12px;
+      background:
+        radial-gradient(10px 10px at 30% 30%, rgba(255,255,255,.8), transparent 55%),
+        linear-gradient(135deg, var(--brand1), var(--brand2));
+      box-shadow: 0 10px 28px rgba(124,58,237,.25);
+      border:1px solid rgba(255,255,255,.15);
+    }
+    .brand b{
       font-weight:900;
-      letter-spacing:1px;
-      margin:6px 0 12px;
-      background: linear-gradient(180deg,#ffe9a3,#f6c453,#b8860b);
+      letter-spacing:.3px;
+      font-size:15px;
+    }
+    .brand small{
+      display:block;
+      font-size:11px;
+      color:var(--muted2);
+      margin-top:1px;
+    }
+
+    .nav{
+      display:none;
+      gap:14px;
+      align-items:center;
+      justify-content:center;
+      flex:1;
+    }
+    .nav a{
+      text-decoration:none;
+      color:var(--muted);
+      font-size:13px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+    }
+    .nav a:hover{
+      color:var(--text);
+      border-color:rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+    }
+
+    .topcta{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:flex-end;
+      min-width: 180px;
+    }
+    .pill{
+      text-decoration:none;
+      font-weight:800;
+      font-size:12px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color:var(--text);
+      -webkit-tap-highlight-color: transparent;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .pill:hover{background: rgba(255,255,255,.08)}
+    .pill.primary{
+      border-color: rgba(34,211,238,.35);
+      background: linear-gradient(135deg, rgba(124,58,237,.95), rgba(34,211,238,.85));
+      box-shadow: 0 18px 55px rgba(34,211,238,.16);
+    }
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+      margin-top:18px;
+    }
+    .heroCard{
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .heroInner{
+      padding:26px 18px;
+      position:relative;
+      z-index:2;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:12px;
+      color:rgba(255,255,255,.82);
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+    }
+    .dot{
+      width:8px;height:8px;border-radius:999px;background:var(--ok);
+      box-shadow: 0 0 0 6px rgba(16,185,129,.14);
+    }
+
+    h1{
+      margin:14px 0 10px;
+      font-size:32px;
+      line-height:1.1;
+      letter-spacing:-.6px;
+    }
+    .grad{
+      background: linear-gradient(135deg, #ffffff, var(--brand3), var(--brand2));
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
-      text-shadow: 0 2px 0 #8a6b14, 0 4px 10px rgba(246,196,83,0.45);
     }
-    .vip{ margin:10px 0 18px; }
-    .vip span{
-      display:inline-block;
-      padding:8px 22px;
-      border-radius:999px;
-      background:linear-gradient(135deg,#f6c453,#b8860b);
-      color:#111;
-      font-weight:700;
+    .lead{
+      margin:0 0 16px;
+      color:var(--muted);
       font-size:14px;
+      line-height:1.55;
+      max-width: 62ch;
     }
-    .card{
-      background:linear-gradient(180deg,#0b1c2e,#040b14);
-      border-radius:26px;
-      padding:26px 20px;
-      box-shadow:0 20px 50px rgba(0,0,0,.6);
-      text-align:center;
+
+    .heroCtas{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top:10px;
     }
-    h1{ font-size:26px; line-height:1.25; margin:0 0 10px; }
-    h1 b{color:#f6c453}
-    .sub{ opacity:.75; font-size:14px; margin-bottom:18px; }
-    .wpp{
+    .btn{
       display:flex;
       align-items:center;
       justify-content:center;
       gap:10px;
-      background:linear-gradient(135deg,#f6c453,#e0a800);
-      color:#111;
       text-decoration:none;
-      font-weight:800;
-      border-radius:999px;
-      padding:16px;
-      font-size:18px;
-      box-shadow:0 0 25px rgba(246,196,83,.6);
-      animation:pulse 2s ease-in-out infinite;
+      font-weight:900;
+      font-size:15px;
+      padding:14px 16px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
       -webkit-tap-highlight-color: transparent;
       user-select:none;
     }
-    @keyframes pulse {
-      0%{transform:scale(1);box-shadow:0 0 25px rgba(246,196,83,.5)}
-      50%{transform:scale(1.06);box-shadow:0 0 45px rgba(246,196,83,.9)}
-      100%{transform:scale(1);box-shadow:0 0 25px rgba(246,196,83,.5)}
+    .btn:hover{background: rgba(255,255,255,.09)}
+    .btn.primary{
+      border-color: rgba(34,211,238,.35);
+      background: linear-gradient(135deg, rgba(124,58,237,.95), rgba(34,211,238,.85));
+      box-shadow: 0 20px 60px rgba(124,58,237,.18);
+      animation: pulse 2.2s ease-in-out infinite;
     }
-    .info{ margin-top:16px; font-size:13px; opacity:.8; }
-    .stats{
+
+    @keyframes pulse{
+      0%{transform:translateY(0); box-shadow: 0 18px 55px rgba(124,58,237,.16)}
+      50%{transform:translateY(-2px); box-shadow: 0 30px 80px rgba(34,211,238,.18)}
+      100%{transform:translateY(0); box-shadow: 0 18px 55px rgba(124,58,237,.16)}
+    }
+
+    .micro{
+      margin-top:10px;
+      font-size:12px;
+      color:var(--muted2);
       display:flex;
       gap:10px;
-      background:#0b1c2e;
-      border-radius:18px;
-      margin-top:18px;
-      padding:14px 10px;
-      font-size:13px;
+      flex-wrap:wrap;
     }
-    .stats div{flex:1}
-    .stats b{ color:#f6c453; display:block; margin-top:4px; font-size:15px; }
-    .footer{ margin-top:24px; opacity:.55; font-size:12px; }
+    .micro span{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:999px;
+      background: rgba(255,255,255,.03);
+    }
+
+    .heroBg{
+      position:absolute; inset:-20px;
+      background:
+        radial-gradient(300px 240px at 20% 20%, rgba(34,211,238,.22), transparent 60%),
+        radial-gradient(280px 220px at 80% 10%, rgba(124,58,237,.28), transparent 60%),
+        radial-gradient(240px 220px at 75% 80%, rgba(167,139,250,.22), transparent 60%);
+      filter: blur(2px);
+      z-index:1;
+    }
+
+    /* Sections */
+    .section{
+      margin-top:18px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding:18px;
+    }
+    .section h2{
+      margin:0 0 10px;
+      font-size:18px;
+      letter-spacing:-.2px;
+    }
+    .section p{
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.6;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:12px;
+    }
+    .card{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      padding:14px;
+    }
+    .card b{display:block; margin-bottom:6px}
+    .card .meta{color:var(--muted2); font-size:12px; line-height:1.5}
+
+    .kpi{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .kpi .chip{
+      flex: 1 1 140px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      padding:12px;
+    }
+    .chip small{display:block; color:var(--muted2); font-size:11px}
+    .chip b{display:block; font-size:15px; margin-top:4px}
+
+    /* FAQ */
+    details{
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      padding:12px 12px;
+    }
+    details + details{margin-top:10px}
+    summary{
+      cursor:pointer;
+      font-weight:800;
+      font-size:13px;
+      color:var(--text);
+      outline:none;
+    }
+    details p{margin:10px 0 0; color:var(--muted); font-size:12.5px}
+
+    /* Footer */
+    .footer{
+      margin-top:16px;
+      text-align:center;
+      color:var(--muted2);
+      font-size:12px;
+      padding:18px 8px;
+    }
+
+    /* Floating WhatsApp */
+    .float{
+      position:fixed;
+      right:14px;
+      bottom:14px;
+      z-index:40;
+    }
+    .float a{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:14px 16px;
+      border-radius: 999px;
+      text-decoration:none;
+      font-weight:900;
+      border:1px solid rgba(34,211,238,.35);
+      background: linear-gradient(135deg, rgba(124,58,237,.95), rgba(34,211,238,.85));
+      box-shadow: 0 22px 70px rgba(34,211,238,.18);
+      -webkit-tap-highlight-color: transparent;
+      user-select:none;
+    }
+
+    /* Desktop enhancements */
+    @media (min-width: 860px){
+      .wrap{padding:22px 18px 80px}
+      .nav{display:flex}
+      .hero{grid-template-columns: 1.2fr .8fr}
+      h1{font-size:44px}
+      .heroInner{padding:34px 28px}
+      .section{padding:22px}
+      .grid{grid-template-columns: repeat(3, 1fr)}
+      .grid.two{grid-template-columns: repeat(2, 1fr)}
+    }
   </style>
 
   <script>
-    // ÚNICO punto de disparo (sin listeners duplicados)
-    function wppClick(e){
+    // ✅ Tracking del CTA (sin duplicados)
+    function trackAndGo(e){
       e.preventDefault();
       const url = e.currentTarget.getAttribute('href');
 
-      try { fbq('track','Subscribe'); } catch(err) {}
+      try { fbq('track','Lead'); } catch(err) {}
+      try { fbq('track','Contact'); } catch(err) {}
       try { fbq('trackCustom','WhatsAppClick'); } catch(err) {}
 
-      // NO mandamos SubscribedButton manual porque Meta te lo está registrando automático
       setTimeout(function(){
         window.location.href = url;
-      }, 350);
+      }, 250);
 
       return false;
     }
@@ -134,30 +418,225 @@
 
 <body>
   <div class="wrap">
-    <div class="brand">TÍO RICO</div>
-    <div class="vip"><span>ACCESO VIP</span></div>
 
-    <div class="card">
-      <h1>OBTENÉ UN <b>50%</b> EN TU<br>PRIMER DEPÓSITO</h1>
-      <div class="sub">Escribinos apretando el botón de abajo</div>
-
-      <a class="wpp"
-         href="https://wa.me/5491127809547?text=Hola,%20quiero%20mi%20usuario!%20y%20reclamar%20mi%20bono%20del%2050%25"
-         rel="noopener"
-         onclick="return wppClick(event);">
-        💬 WhatsApp Oficial
-      </a>
-
-      <div class="info">Atención y retiros sin límites las 24 hs</div>
-
-      <div class="stats">
-        <div>Mínimo carga<b>$2.000</b></div>
-        <div>Mínimo retiro<b>$5.000</b></div>
-        <div>Retiros<b>24 hs</b></div>
+    <header class="top">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <b>Selecttech</b>
+          <small>Performance Marketing • Tracking • Creatividades</small>
+        </div>
       </div>
-    </div>
 
-    <div class="footer">©️ 2026 Juego solo para +18. Operá con responsabilidad.</div>
+      <nav class="nav" aria-label="Navegación">
+        <a href="#servicios">Servicios</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#casos">Resultados</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="topcta">
+        <a class="pill" href="#casos">Ver resultados</a>
+        <a class="pill primary"
+           href="https://wa.me/5491127809547?text=Hola%20Selecttech,%20quiero%20una%20auditor%C3%ADa%20y%20presupuesto%20para%20mi%20negocio."
+           rel="noopener"
+           onclick="return trackAndGo(event);">
+          💬 Hablar por WhatsApp
+        </a>
+      </div>
+    </header>
+
+    <section class="heroCard" id="inicio">
+      <div class="heroBg" aria-hidden="true"></div>
+      <div class="heroInner">
+        <div class="hero">
+          <div>
+            <div class="badge"><span class="dot"></span> Auditoría rápida + plan de acción en 24/48 hs</div>
+            <h1>Escalá tu negocio con <span class="grad">marketing medible</span>.</h1>
+            <p class="lead">
+              En Selecttech combinamos <b>performance</b>, <b>creatividad</b> y <b>tracking</b> para bajar costos y subir conversiones.
+              Implementamos campañas, embudos y automatizaciones con foco en resultados.
+            </p>
+
+            <div class="heroCtas" id="contacto">
+              <a class="btn primary"
+                 href="https://wa.me/5491127809547?text=Hola%20Selecttech,%20quiero%20una%20auditor%C3%ADa%20y%20presupuesto%20para%20mi%20negocio."
+                 rel="noopener"
+                 onclick="return trackAndGo(event);">
+                💬 Pedir auditoría por WhatsApp
+              </a>
+              <a class="btn"
+                 href="https://wa.me/5491127809547?text=Hola%20Selecttech,%20quiero%20agendar%20una%20llamada%20de%2015%20min%20para%20ver%20si%20podemos%20trabajar%20juntos."
+                 rel="noopener"
+                 onclick="return trackAndGo(event);">
+                📞 Agendar llamada (15 min)
+              </a>
+
+              <div class="micro">
+                <span>✅ Setup técnico (Pixel/CAPI/GA4)</span>
+                <span>✅ Creatividades orientadas a conversión</span>
+                <span>✅ Reportes simples y claros</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="section" style="margin-top:0">
+              <h2>Qué podés esperar</h2>
+              <p>Una operación ordenada, creatividades consistentes y medición real para optimizar semana a semana.</p>
+
+              <div class="kpi">
+                <div class="chip">
+                  <small>Tiempo de respuesta</small>
+                  <b>Rápido</b>
+                </div>
+                <div class="chip">
+                  <small>Optimización</small>
+                  <b>Semanal</b>
+                </div>
+                <div class="chip">
+                  <small>Enfoque</small>
+                  <b>ROI / CPA</b>
+                </div>
+              </div>
+
+              <div style="margin-top:12px" class="card">
+                <b>Entrega inicial</b>
+                <div class="meta">
+                  Auditoría + hipótesis de mejora + plan de campañas + checklist de tracking.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="servicios">
+      <h2>Servicios</h2>
+      <p>Elegimos lo que suma valor real en tu etapa (captación, remarketing, automatización y medición).</p>
+
+      <div class="grid">
+        <div class="card">
+          <b>Performance Ads</b>
+          <div class="meta">Meta/Google: estructura, públicos, creatividades y optimización por métricas.</div>
+        </div>
+        <div class="card">
+          <b>Creatividades</b>
+          <div class="meta">Diseños y ángulos que escalan sin perder consistencia de marca.</div>
+        </div>
+        <div class="card">
+          <b>Tracking & Analytics</b>
+          <div class="meta">Pixel, CAPI, GA4 y eventos para medir lo que importa (sin humo).</div>
+        </div>
+        <div class="card">
+          <b>Embudo & Landing</b>
+          <div class="meta">Landing rápida, copy claro, CTAs y testing para mejorar conversión.</div>
+        </div>
+        <div class="card">
+          <b>WhatsApp / CRM</b>
+          <div class="meta">Flujos, etiquetas y seguimiento para aumentar tasa de cierre.</div>
+        </div>
+        <div class="card">
+          <b>Remarketing</b>
+          <div class="meta">Recuperación de interesados: audiencias, ventanas y mensajes por intención.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="proceso">
+      <h2>Proceso de trabajo</h2>
+      <p>Metodología simple, repetible y escalable. Lo importante: medir, aprender y mejorar.</p>
+
+      <div class="grid two">
+        <div class="card">
+          <b>1) Diagnóstico</b>
+          <div class="meta">Revisión de cuenta, creatividades, embudo y tracking. Detectamos cuellos de botella.</div>
+        </div>
+        <div class="card">
+          <b>2) Plan y setup</b>
+          <div class="meta">Estructura de campañas + eventos + UTMs + bases de reporting.</div>
+        </div>
+        <div class="card">
+          <b>3) Lanzamiento</b>
+          <div class="meta">Testing de ángulos y creatividades. Ajuste de presupuesto según señales.</div>
+        </div>
+        <div class="card">
+          <b>4) Optimización</b>
+          <div class="meta">Iteración semanal: creatividades, públicos y embudo. Decisiones por datos.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="casos">
+      <h2>Resultados (ejemplos)</h2>
+      <p>Podés editar estos números y testimonios por los tuyos. La idea es mostrar credibilidad rápido.</p>
+
+      <div class="grid two">
+        <div class="card">
+          <b>Ejemplo A — Lead gen</b>
+          <div class="meta">Optimización de creatividades + remarketing → mejora de conversión y estabilidad.</div>
+          <div class="kpi">
+            <div class="chip"><small>CPA</small><b>-28%</b></div>
+            <div class="chip"><small>CTR</small><b>+41%</b></div>
+            <div class="chip"><small>Conversión</small><b>+19%</b></div>
+          </div>
+        </div>
+        <div class="card">
+          <b>Ejemplo B — Embudo + tracking</b>
+          <div class="meta">Eventos bien definidos + landing más clara → mejor lectura del algoritmo.</div>
+          <div class="kpi">
+            <div class="chip"><small>Eventos</small><b>OK</b></div>
+            <div class="chip"><small>Calidad</small><b>↑</b></div>
+            <div class="chip"><small>Escala</small><b>+Budget</b></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <b>Testimonio</b>
+        <div class="meta">“Ordenamos campañas, mejoró el tracking y empezamos a escalar con métricas claras.”</div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <h2>Preguntas frecuentes</h2>
+      <p>Lo que más nos preguntan antes de empezar.</p>
+
+      <details>
+        <summary>¿En cuánto tiempo se ven resultados?</summary>
+        <p>Depende del punto de partida y del presupuesto. Normalmente en 7–14 días ya hay señales claras para optimizar y tomar decisiones.</p>
+      </details>
+
+      <details>
+        <summary>¿Qué necesitás para arrancar?</summary>
+        <p>Acceso a cuentas (Meta/Google), pixel/analytics si ya existen, y un brief corto del negocio (objetivos, márgenes, oferta y zonas).</p>
+      </details>
+
+      <details>
+        <summary>¿Trabajan con reporte?</summary>
+        <p>Sí. Reporte simple con métricas clave (CPA, CTR, CVR, ROAS si aplica) y plan de acciones por semana.</p>
+      </details>
+
+      <details>
+        <summary>¿Hacen creatividades?</summary>
+        <p>Sí. Armamos variantes por ángulo y formato, y dejamos una línea visual consistente para escalar sin “quemar” piezas.</p>
+      </details>
+    </section>
+
+    <div class="footer">
+      © 2026 Selecttech. Marketing digital orientado a performance. <br />
+      <span style="opacity:.75">Este sitio puede usar herramientas de medición (Pixel/Analytics) para optimización.</span>
+    </div>
+  </div>
+
+  <div class="float" aria-label="WhatsApp flotante">
+    <a href="https://wa.me/5491127809547?text=Hola%20Selecttech,%20quiero%20una%20auditor%C3%ADa%20y%20presupuesto%20para%20mi%20negocio."
+       rel="noopener"
+       onclick="return trackAndGo(event);">
+      💬 WhatsApp
+    </a>
   </div>
 </body>
 </html>
