@@ -8,8 +8,7 @@
 
   <!-- ====== CONFIG ====== -->
   <script>
-    // Pixel opcional (si no usás pixel, dejalo vacío "")
-    const PIXEL_ID = "";
+    const PIXEL_ID = "1406219094329442";
 
     // WhatsApp en formato internacional sin "+" ni espacios. Ej: 54911xxxxxxxx
     const WHATSAPP_PHONE = "54911XXXXXXXX";
@@ -17,24 +16,22 @@
     // Mensaje precargado
     const WA_MESSAGE = "Hola! Quiero acceso VIP. Me creás mi usuario?";
 
-    // Eventos custom (opcional)
-    const TRACK_CUSTOM_EVENTS = true;
+    // Si querés sumar UTMs al mensaje (opcional)
+    const APPEND_UTM_TO_MESSAGE = true;
   </script>
 
-  <!-- ====== META PIXEL (OPCIONAL) ====== -->
+  <!-- ====== META PIXEL ====== -->
   <script>
-    (function initPixel(){
-      if(!PIXEL_ID) return;
-      !function(f,b,e,v,n,t,s){
-        if(f.fbq)return; n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n; n.push=n; n.loaded=!0; n.version='2.0';
-        n.queue=[]; t=b.createElement(e); t.async=!0; t.src=v;
-        s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s);
-      }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', PIXEL_ID);
-      fbq('track', 'PageView');
-    })();
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return; n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n; n.push=n; n.loaded=!0; n.version='2.0';
+      n.queue=[]; t=b.createElement(e); t.async=!0; t.src=v;
+      s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s);
+    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', PIXEL_ID);
+    fbq('track', 'PageView');
   </script>
 
   <style>
@@ -49,12 +46,14 @@
       --stroke:rgba(215,180,106,.36);
       --shadow: 0 22px 70px rgba(0,0,0,.58);
       --radius:24px;
-      --wa:#25D366;
+
+      --wa:#25D366; /* verde WhatsApp */
+      --wa2:#1fb65b;
     }
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", "Noto Sans";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
       color:var(--text);
       min-height:100vh;
       display:flex;
@@ -73,9 +72,7 @@
       grid-template-columns: 1.08fr .92fr;
       gap:16px;
     }
-    @media (max-width: 900px){
-      .wrap{grid-template-columns:1fr; gap:14px;}
-    }
+    @media (max-width: 900px){ .wrap{grid-template-columns:1fr; gap:14px;} }
     .panel{
       position:relative;
       border-radius: var(--radius);
@@ -94,30 +91,20 @@
     }
     .left{padding:22px 20px 18px;}
     .right{padding:18px; display:flex; flex-direction:column; gap:14px;}
+
     .toprow{
       display:flex; align-items:center; justify-content:space-between; gap:10px;
       position:relative; z-index:1;
     }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-    }
+    .brand{display:flex; align-items:center; gap:10px;}
     .mark{
       width:44px; height:44px; border-radius:16px;
       background: radial-gradient(circle at 30% 30%, var(--gold2), var(--gold));
       box-shadow: 0 18px 55px rgba(215,180,106,.35);
       border:1px solid rgba(255,255,255,.10);
     }
-    .brandName{
-      font-weight: 1000;
-      letter-spacing: .85px;
-      font-size: 14px;
-      line-height:1.05;
-    }
-    .brandSub{
-      color: rgba(245,241,230,.70);
-      font-size: 12px;
-      margin-top:3px;
-    }
+    .brandName{font-weight: 1000; letter-spacing: .85px; font-size: 14px; line-height:1.05;}
+    .brandSub{color: rgba(245,241,230,.70); font-size: 12px; margin-top:3px;}
     .badge{
       font-size: 12px;
       padding:7px 10px;
@@ -134,7 +121,6 @@
       margin:14px 0 8px;
       font-size: clamp(28px, 4.2vw, 46px);
       line-height:1.05;
-      letter-spacing:.15px;
     }
     .sub{
       position:relative; z-index:1;
@@ -143,15 +129,14 @@
       font-size: 15.5px;
       line-height:1.45;
     }
+
     .grid{
       position:relative; z-index:1;
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:10px;
     }
-    @media (max-width: 520px){
-      .grid{grid-template-columns:1fr;}
-    }
+    @media (max-width: 520px){ .grid{grid-template-columns:1fr;} }
     .card{
       background: var(--card);
       border:1px solid rgba(255,255,255,.07);
@@ -169,10 +154,10 @@
       flex:0 0 auto;
       box-shadow: 0 8px 22px rgba(0,0,0,.30);
     }
-    .card b{display:block; font-size: 13.5px; letter-spacing:.2px;}
+    .card b{display:block; font-size: 13.5px;}
     .card span{display:block; color: var(--muted); font-size: 12.8px; margin-top:2px;}
 
-    /* ===== CTA BUTTON (ANIMADO) ===== */
+    /* ===== BOTONES ===== */
     .ctaRow{
       position:relative; z-index:1;
       display:flex; gap:10px; flex-wrap:wrap;
@@ -196,20 +181,20 @@
       box-shadow:none;
       font-weight:900;
     }
+
+    /* BOTÓN VERDE (WhatsApp) ANIMADO */
     .btn-wa{
       position:relative;
-      color:#07130b;
-      background: linear-gradient(180deg, rgba(247,231,176,.92), rgba(215,180,106,.96));
-      box-shadow: 0 18px 45px rgba(215,180,106,.25);
+      color:#05130a;
+      background: linear-gradient(180deg, var(--wa), var(--wa2));
+      box-shadow: 0 18px 45px rgba(37,211,102,.18);
       overflow:hidden;
       transform: translateZ(0);
       animation: waPulse 1.8s ease-in-out infinite;
     }
-    .btn-wa:hover{
-      transform: translateY(-1px);
-      filter: brightness(1.03);
-    }
-    /* Shimmer */
+    .btn-wa:hover{ transform: translateY(-1px); filter: brightness(1.03); }
+
+    /* shimmer */
     .btn-wa::after{
       content:"";
       position:absolute; top:-40%; left:-60%;
@@ -218,20 +203,20 @@
       transform: skewX(-20deg);
       animation: shimmer 1.9s ease-in-out infinite;
       pointer-events:none;
-      opacity:.75;
+      opacity:.70;
     }
-    /* Ripple ring */
+    /* ring */
     .btn-wa::before{
       content:"";
       position:absolute; inset:-10px;
       border-radius: 22px;
-      border:1px solid rgba(247,231,176,.35);
+      border:1px solid rgba(37,211,102,.35);
       animation: ring 1.8s ease-out infinite;
       pointer-events:none;
     }
     @keyframes waPulse{
-      0%,100%{ box-shadow: 0 18px 45px rgba(215,180,106,.22); }
-      50%{ box-shadow: 0 22px 70px rgba(215,180,106,.35); }
+      0%,100%{ box-shadow: 0 18px 45px rgba(37,211,102,.16); }
+      50%{ box-shadow: 0 22px 70px rgba(37,211,102,.26); }
     }
     @keyframes shimmer{
       0%{left:-60%}
@@ -252,7 +237,7 @@
       line-height:1.35;
     }
 
-    /* Right side mock */
+    /* Right mock */
     .stat{
       position:relative; z-index:1;
       background: rgba(0,0,0,.22);
@@ -266,7 +251,6 @@
       font-size: clamp(30px, 4.6vw, 52px);
       line-height:1;
       margin:4px 0 6px;
-      letter-spacing:.2px;
     }
     .stat .big em{
       font-style:normal;
@@ -277,6 +261,7 @@
       text-shadow: 0 16px 60px rgba(215,180,106,.22);
     }
     .stat .mini{color: var(--muted); font-size: 13.5px; line-height:1.35;}
+
     .chat{
       position:relative; z-index:1;
       background: rgba(0,0,0,.22);
@@ -318,7 +303,6 @@
 
 <body>
   <main class="wrap">
-    <!-- LEFT -->
     <section class="panel left">
       <div class="toprow">
         <div class="brand">
@@ -332,66 +316,34 @@
       </div>
 
       <h1>Entrá por WhatsApp y activá tu acceso <span style="color:var(--gold2)">en minutos</span>.</h1>
-      <p class="sub">
-        Te guiamos con el registro y el acceso. Rápido, simple y con soporte directo.
-      </p>
+      <p class="sub">Te guiamos con el registro y el acceso. Rápido, simple y con soporte directo.</p>
 
       <div class="grid">
-        <div class="card">
-          <div class="icon">🎮</div>
-          <div>
-            <b>+2.500 juegos</b>
-            <span>Variedad para todos los gustos.</span>
-          </div>
-        </div>
-        <div class="card">
-          <div class="icon">⚡</div>
-          <div>
-            <b>Retiros al instante</b>
-            <span>Proceso ágil (según validación).</span>
-          </div>
-        </div>
-        <div class="card">
-          <div class="icon">🔒</div>
-          <div>
-            <b>Atención directa</b>
-            <span>Te acompañamos en el alta.</span>
-          </div>
-        </div>
-        <div class="card">
-          <div class="icon">🏆</div>
-          <div>
-            <b>Retiro mínimo</b>
-            <span>$5.000 ARS</span>
-          </div>
-        </div>
+        <div class="card"><div class="icon">🎮</div><div><b>+2.500 juegos</b><span>Variedad para todos los gustos.</span></div></div>
+        <div class="card"><div class="icon">⚡</div><div><b>Retiros al instante</b><span>Proceso ágil (según validación).</span></div></div>
+        <div class="card"><div class="icon">🔒</div><div><b>Atención directa</b><span>Te acompañamos en el alta.</span></div></div>
+        <div class="card"><div class="icon">🏆</div><div><b>Retiro mínimo</b><span>$5.000 ARS</span></div></div>
       </div>
 
       <div class="ctaRow">
+        <!-- BOTÓN VERDE -->
         <button class="btn btn-wa" id="btn-wa">💬 HABLAR POR WHATSAPP</button>
+
         <button class="btn secondary" id="btn-copy">📋 COPIAR MENSAJE</button>
       </div>
 
-      <div class="fine">
-        *Solo para mayores de edad. Jugá con responsabilidad.
-      </div>
+      <div class="fine">*Solo para mayores de edad. Jugá con responsabilidad.</div>
     </section>
 
-    <!-- RIGHT -->
     <aside class="panel right">
       <div class="stat">
-        <div style="color:rgba(245,241,230,.75); font-weight:900; letter-spacing:.25px; font-size:13px;">
-          Acceso VIP • Mobile-first
-        </div>
+        <div style="color:rgba(245,241,230,.75); font-weight:900; font-size:13px;">Acceso VIP • Mobile-first</div>
         <div class="big"><em>+2.500</em></div>
         <div class="mini">Juegos disponibles • Experiencia optimizada para celular</div>
       </div>
 
       <div class="chat" aria-label="Vista previa WhatsApp">
-        <div class="chatTop">
-          <span>WhatsApp • Soporte</span>
-          <span style="opacity:.75">EN LÍNEA</span>
-        </div>
+        <div class="chatTop"><span>WhatsApp • Soporte</span><span style="opacity:.75">EN LÍNEA</span></div>
         <div class="bubbles">
           <div class="bubble">Hola 👋 ¿Querés que te cree tu usuario VIP?</div>
           <div class="bubble me">Sí, quiero acceso. Me ayudás?</div>
@@ -402,30 +354,51 @@
   </main>
 
   <script>
-    function buildWaLink() {
-      const msg = encodeURIComponent(WA_MESSAGE || "Hola! Quiero acceso VIP. Me creás mi usuario?");
-      return `https://wa.me/${WHATSAPP_PHONE}?text=${msg}`;
-    }
-
-    function track(eventName){
-      if(!TRACK_CUSTOM_EVENTS) return;
+    function safeFbqTrack(type, name, params){
       try{
         if(window.fbq && typeof window.fbq === "function"){
-          fbq("trackCustom", eventName);
+          if(type === "standard") fbq("track", name, params || {});
+          if(type === "custom") fbq("trackCustom", name, params || {});
         }
       }catch(e){}
     }
 
-    document.getElementById("btn-wa").addEventListener("click", () => {
-      track("ClickWhatsApp");
+    function getUtmString(){
+      const p = new URLSearchParams(window.location.search);
+      const keys = ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"];
+      const parts = [];
+      for (const k of keys){
+        const v = p.get(k);
+        if(v) parts.push(`${k}=${v}`);
+      }
+      return parts.length ? `\n\n${parts.join(" | ")}` : "";
+    }
+
+    function buildWaLink() {
+      let msg = (WA_MESSAGE || "Hola! vengo del anuncio. Me creás mi usuario?");
+      if(APPEND_UTM_TO_MESSAGE) msg += getUtmString();
+      return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
+    }
+
+    const btnWa = document.getElementById("btn-wa");
+    const btnCopy = document.getElementById("btn-copy");
+
+    btnWa.addEventListener("click", () => {
+      // 1) Evento estándar "Subscribe" cuando tocan el botón verde
+      safeFbqTrack("standard", "Subscribe", {source: "landing_button"});
+
+      // 2) Evento "cuando abren WhatsApp" (no se puede saber envío real)
+      safeFbqTrack("custom", "WhatsAppClick", {destination: "wa.me"});
+
       window.location.href = buildWaLink();
     });
 
-    document.getElementById("btn-copy").addEventListener("click", async () => {
-      const text = (WA_MESSAGE || "Hola! vengo del anuncio. Me creás mi usuario?");
+    btnCopy.addEventListener("click", async () => {
+      let text = (WA_MESSAGE || "Hola! Quiero acceso VIP. Me creás mi usuario?");
+      if(APPEND_UTM_TO_MESSAGE) text += getUtmString();
       try{
         await navigator.clipboard.writeText(text);
-        track("CopyMessage");
+        safeFbqTrack("custom", "CopyMessage", {});
         alert("Listo ✅ Mensaje copiado.");
       }catch(e){
         const ta = document.createElement("textarea");
@@ -434,7 +407,7 @@
         ta.select();
         document.execCommand("copy");
         ta.remove();
-        track("CopyMessage");
+        safeFbqTrack("custom", "CopyMessage", {});
         alert("Listo ✅ Mensaje copiado.");
       }
     });
