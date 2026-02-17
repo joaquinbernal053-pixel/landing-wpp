@@ -3,130 +3,151 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Acceso VIP | Plataforma de Juegos</title>
+  <title>AVES CROUPIER | Acceso VIP</title>
   <meta name="robots" content="noindex,nofollow" />
 
   <!-- ====== CONFIG ====== -->
   <script>
-    // 1) Cambiá por tu Pixel
-    const PIXEL_ID = "1406219094329442";
+    // Pixel opcional (si no usás pixel, dejalo vacío "")
+    const PIXEL_ID = "";
 
-    // 2) WhatsApp en formato internacional sin + ni espacios. Ej: 54911xxxxxxx
+    // WhatsApp en formato internacional sin "+" ni espacios. Ej: 54911xxxxxxxx
     const WHATSAPP_PHONE = "54911XXXXXXXX";
 
-    // 3) Mensaje precargado
-    const WA_MESSAGE = "Hola! vengo del anuncio y quiero crear mi usuario.";
+    // Mensaje precargado
+    const WA_MESSAGE = "Hola! Quiero acceso VIP. Me creás mi usuario?";
+
+    // Eventos custom (opcional)
+    const TRACK_CUSTOM_EVENTS = true;
   </script>
 
-  <!-- ====== META PIXEL ====== -->
+  <!-- ====== META PIXEL (OPCIONAL) ====== -->
   <script>
-    !function(f,b,e,v,n,t,s){
-      if(f.fbq)return; n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n; n.push=n; n.loaded=!0; n.version='2.0';
-      n.queue=[]; t=b.createElement(e); t.async=!0; t.src=v;
-      s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s);
-    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-
-    // init dinámico
-    if (typeof PIXEL_ID === "string" && PIXEL_ID && PIXEL_ID !== "1406219094329442") {
+    (function initPixel(){
+      if(!PIXEL_ID) return;
+      !function(f,b,e,v,n,t,s){
+        if(f.fbq)return; n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n; n.push=n; n.loaded=!0; n.version='2.0';
+        n.queue=[]; t=b.createElement(e); t.async=!0; t.src=v;
+        s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s);
+      }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', PIXEL_ID);
       fbq('track', 'PageView');
-    }
+    })();
   </script>
 
   <style>
     :root{
-      --bg:#070606;
+      --bg0:#050404;
+      --bg1:#0b0707;
       --gold:#d7b46a;
       --gold2:#f7e7b0;
       --text:#f5f1e6;
-      --muted:rgba(245,241,230,.75);
+      --muted:rgba(245,241,230,.78);
       --card:rgba(255,255,255,.06);
-      --stroke:rgba(215,180,106,.35);
-      --shadow: 0 20px 60px rgba(0,0,0,.55);
-      --radius:22px;
+      --stroke:rgba(215,180,106,.36);
+      --shadow: 0 22px 70px rgba(0,0,0,.58);
+      --radius:24px;
+      --wa:#25D366;
     }
     *{box-sizing:border-box}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", "Noto Sans";
-      background: radial-gradient(1000px 700px at 20% 10%, rgba(215,180,106,.14), transparent 55%),
-                  radial-gradient(900px 600px at 85% 15%, rgba(247,231,176,.10), transparent 60%),
-                  radial-gradient(700px 500px at 50% 100%, rgba(215,180,106,.10), transparent 60%),
-                  linear-gradient(180deg, #040303, #0a0707 45%, #040303);
       color:var(--text);
       min-height:100vh;
       display:flex;
       align-items:center;
       justify-content:center;
       padding:22px;
+      background:
+        radial-gradient(1100px 780px at 15% 10%, rgba(215,180,106,.14), transparent 58%),
+        radial-gradient(900px 620px at 85% 15%, rgba(247,231,176,.10), transparent 60%),
+        radial-gradient(900px 540px at 50% 100%, rgba(215,180,106,.10), transparent 62%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 45%, var(--bg0));
     }
     .wrap{
-      width: min(980px, 100%);
+      width:min(1020px, 100%);
       display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap:18px;
+      grid-template-columns: 1.08fr .92fr;
+      gap:16px;
     }
-    @media (max-width: 860px){
+    @media (max-width: 900px){
       .wrap{grid-template-columns:1fr; gap:14px;}
     }
     .panel{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid var(--stroke);
+      position:relative;
       border-radius: var(--radius);
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       box-shadow: var(--shadow);
       overflow:hidden;
-      position:relative;
     }
     .panel::before{
       content:"";
       position:absolute; inset:-2px;
-      background: radial-gradient(600px 260px at 25% 10%, rgba(247,231,176,.20), transparent 65%),
-                  radial-gradient(540px 240px at 85% 20%, rgba(215,180,106,.18), transparent 65%);
+      background:
+        radial-gradient(640px 280px at 25% 8%, rgba(247,231,176,.20), transparent 66%),
+        radial-gradient(560px 260px at 85% 18%, rgba(215,180,106,.18), transparent 66%);
       pointer-events:none;
     }
     .left{padding:22px 20px 18px;}
+    .right{padding:18px; display:flex; flex-direction:column; gap:14px;}
+    .toprow{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      position:relative; z-index:1;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+    }
+    .mark{
+      width:44px; height:44px; border-radius:16px;
+      background: radial-gradient(circle at 30% 30%, var(--gold2), var(--gold));
+      box-shadow: 0 18px 55px rgba(215,180,106,.35);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .brandName{
+      font-weight: 1000;
+      letter-spacing: .85px;
+      font-size: 14px;
+      line-height:1.05;
+    }
+    .brandSub{
+      color: rgba(245,241,230,.70);
+      font-size: 12px;
+      margin-top:3px;
+    }
     .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 12px;
-      border-radius: 999px;
-      border:1px solid rgba(215,180,106,.45);
+      font-size: 12px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(215,180,106,.40);
       background: rgba(215,180,106,.10);
       color: var(--gold2);
-      font-weight:700;
+      font-weight: 900;
       letter-spacing:.35px;
-      font-size: 12.5px;
-      position:relative;
-      z-index:1;
-    }
-    .badge .dot{
-      width:8px; height:8px; border-radius:50%;
-      background: radial-gradient(circle at 30% 30%, var(--gold2), var(--gold));
-      box-shadow: 0 0 12px rgba(215,180,106,.55);
+      white-space:nowrap;
     }
     h1{
+      position:relative; z-index:1;
       margin:14px 0 8px;
-      font-size: clamp(28px, 4.2vw, 44px);
-      line-height:1.06;
-      letter-spacing:.2px;
-      position:relative;
-      z-index:1;
+      font-size: clamp(28px, 4.2vw, 46px);
+      line-height:1.05;
+      letter-spacing:.15px;
     }
     .sub{
+      position:relative; z-index:1;
       margin:0 0 16px;
       color: var(--muted);
       font-size: 15.5px;
       line-height:1.45;
-      position:relative;
-      z-index:1;
     }
     .grid{
+      position:relative; z-index:1;
       display:grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns:1fr 1fr;
       gap:10px;
-      position:relative;
-      z-index:1;
     }
     @media (max-width: 520px){
       .grid{grid-template-columns:1fr;}
@@ -135,7 +156,7 @@
       background: var(--card);
       border:1px solid rgba(255,255,255,.07);
       border-radius: 16px;
-      padding:12px 12px;
+      padding:12px;
       display:flex;
       gap:10px;
       align-items:flex-start;
@@ -145,123 +166,135 @@
       background: rgba(215,180,106,.14);
       border:1px solid rgba(215,180,106,.25);
       display:grid; place-items:center;
-      flex: 0 0 auto;
+      flex:0 0 auto;
       box-shadow: 0 8px 22px rgba(0,0,0,.30);
     }
     .card b{display:block; font-size: 13.5px; letter-spacing:.2px;}
     .card span{display:block; color: var(--muted); font-size: 12.8px; margin-top:2px;}
+
+    /* ===== CTA BUTTON (ANIMADO) ===== */
     .ctaRow{
+      position:relative; z-index:1;
       display:flex; gap:10px; flex-wrap:wrap;
       margin-top:16px;
-      position:relative;
-      z-index:1;
     }
     .btn{
       appearance:none; border:0; cursor:pointer;
       padding: 14px 16px;
       border-radius: 16px;
-      font-weight: 900;
+      font-weight: 1000;
       letter-spacing:.35px;
-      color:#1a1207;
-      background: linear-gradient(180deg, var(--gold2), var(--gold));
-      box-shadow: 0 16px 40px rgba(215,180,106,.25);
       display:inline-flex; align-items:center; gap:10px;
-      transition: transform .14s ease, filter .14s ease;
+      transition: transform .15s ease, filter .15s ease;
+      user-select:none;
     }
-    .btn:hover{transform: translateY(-1px); filter: brightness(1.02);}
     .btn:active{transform: translateY(1px);}
     .btn.secondary{
       background: rgba(255,255,255,.06);
       color: var(--text);
       border:1px solid rgba(215,180,106,.32);
       box-shadow:none;
-      font-weight:800;
+      font-weight:900;
     }
+    .btn-wa{
+      position:relative;
+      color:#07130b;
+      background: linear-gradient(180deg, rgba(247,231,176,.92), rgba(215,180,106,.96));
+      box-shadow: 0 18px 45px rgba(215,180,106,.25);
+      overflow:hidden;
+      transform: translateZ(0);
+      animation: waPulse 1.8s ease-in-out infinite;
+    }
+    .btn-wa:hover{
+      transform: translateY(-1px);
+      filter: brightness(1.03);
+    }
+    /* Shimmer */
+    .btn-wa::after{
+      content:"";
+      position:absolute; top:-40%; left:-60%;
+      width:55%; height:180%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent);
+      transform: skewX(-20deg);
+      animation: shimmer 1.9s ease-in-out infinite;
+      pointer-events:none;
+      opacity:.75;
+    }
+    /* Ripple ring */
+    .btn-wa::before{
+      content:"";
+      position:absolute; inset:-10px;
+      border-radius: 22px;
+      border:1px solid rgba(247,231,176,.35);
+      animation: ring 1.8s ease-out infinite;
+      pointer-events:none;
+    }
+    @keyframes waPulse{
+      0%,100%{ box-shadow: 0 18px 45px rgba(215,180,106,.22); }
+      50%{ box-shadow: 0 22px 70px rgba(215,180,106,.35); }
+    }
+    @keyframes shimmer{
+      0%{left:-60%}
+      60%{left:115%}
+      100%{left:115%}
+    }
+    @keyframes ring{
+      0%{ transform: scale(.96); opacity:.65; }
+      70%{ transform: scale(1.06); opacity:0; }
+      100%{ opacity:0; }
+    }
+
     .fine{
+      position:relative; z-index:1;
       margin-top:12px;
       color: rgba(245,241,230,.60);
       font-size: 12px;
       line-height:1.35;
-      position:relative;
-      z-index:1;
     }
-    .right{
-      padding:0;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      position:relative;
+
+    /* Right side mock */
+    .stat{
+      position:relative; z-index:1;
+      background: rgba(0,0,0,.22);
+      border:1px solid rgba(215,180,106,.24);
+      border-radius: 20px;
+      padding:14px;
+      box-shadow: 0 18px 70px rgba(0,0,0,.42);
     }
-    .hero{
-      padding:18px 18px 10px;
-      position:relative;
-      z-index:1;
-    }
-    .brand{
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-    }
-    .logo{
-      display:flex; align-items:center; gap:10px;
-    }
-    .mark{
-      width:40px; height:40px; border-radius: 14px;
-      background: radial-gradient(circle at 30% 30%, var(--gold2), var(--gold));
-      box-shadow: 0 18px 50px rgba(215,180,106,.35);
-    }
-    .brandName{
-      font-weight: 950;
-      letter-spacing:.6px;
-      font-size: 13.5px;
-    }
-    .pill{
-      font-size: 12px;
-      color: rgba(245,241,230,.8);
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
-      padding:7px 10px;
-      border-radius: 999px;
-      white-space:nowrap;
-    }
-    .bigNumber{
-      margin:16px 0 0;
-      font-size: clamp(34px, 5vw, 56px);
-      line-height:1;
+    .stat .big{
       font-weight: 1000;
+      font-size: clamp(30px, 4.6vw, 52px);
+      line-height:1;
+      margin:4px 0 6px;
       letter-spacing:.2px;
     }
-    .bigNumber em{
+    .stat .big em{
       font-style:normal;
       background: linear-gradient(180deg, var(--gold2), var(--gold));
       -webkit-background-clip:text;
       background-clip:text;
       color:transparent;
-      text-shadow: 0 16px 60px rgba(215,180,106,.25);
+      text-shadow: 0 16px 60px rgba(215,180,106,.22);
     }
-    .mini{
-      margin:8px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .phone{
-      margin:14px 18px 18px;
-      border-radius: 22px;
-      border:1px solid rgba(215,180,106,.28);
+    .stat .mini{color: var(--muted); font-size: 13.5px; line-height:1.35;}
+    .chat{
+      position:relative; z-index:1;
       background: rgba(0,0,0,.22);
-      box-shadow: 0 20px 70px rgba(0,0,0,.55);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius: 20px;
       overflow:hidden;
-      position:relative;
-      z-index:1;
+      box-shadow: 0 18px 70px rgba(0,0,0,.42);
     }
-    .phoneTop{
+    .chatTop{
       padding:12px 14px;
       border-bottom:1px solid rgba(255,255,255,.06);
       display:flex; align-items:center; justify-content:space-between;
-      color: rgba(245,241,230,.85);
-      font-weight:800;
-      letter-spacing:.2px;
+      color: rgba(245,241,230,.86);
+      font-weight: 900;
       font-size: 13px;
+      letter-spacing:.2px;
     }
-    .chat{
+    .bubbles{
       padding:12px 12px 14px;
       display:flex; flex-direction:column; gap:10px;
     }
@@ -279,27 +312,28 @@
       align-self:flex-end;
       background: rgba(215,180,106,.14);
       border-color: rgba(215,180,106,.18);
-      color: rgba(245,241,230,.96);
-    }
-    .pulse{
-      animation: pulse 1.8s ease-in-out infinite;
-    }
-    @keyframes pulse{
-      0%,100%{box-shadow:0 16px 40px rgba(215,180,106,.20)}
-      50%{box-shadow:0 16px 60px rgba(215,180,106,.35)}
     }
   </style>
 </head>
 
 <body>
   <main class="wrap">
+    <!-- LEFT -->
     <section class="panel left">
-      <div class="badge"><span class="dot"></span> ACCESO VIP • ALTA INTENCIÓN</div>
+      <div class="toprow">
+        <div class="brand">
+          <div class="mark" aria-hidden="true"></div>
+          <div>
+            <div class="brandName">AVES CROUPIER</div>
+            <div class="brandSub">Acceso VIP • Atención directa</div>
+          </div>
+        </div>
+        <div class="badge">ALTA INTENCIÓN</div>
+      </div>
 
-      <h1>Ingresá a una experiencia <span style="color:var(--gold2)">premium</span> desde WhatsApp.</h1>
+      <h1>Entrá por WhatsApp y activá tu acceso <span style="color:var(--gold2)">en minutos</span>.</h1>
       <p class="sub">
-        Acceso rápido, atención directa y una plataforma con gran variedad de juegos.
-        Pedí tu usuario y te guiamos en el alta en minutos.
+        Te guiamos con el registro y el acceso. Rápido, simple y con soporte directo.
       </p>
 
       <div class="grid">
@@ -307,21 +341,21 @@
           <div class="icon">🎮</div>
           <div>
             <b>+2.500 juegos</b>
-            <span>Variedad y novedades frecuentes.</span>
+            <span>Variedad para todos los gustos.</span>
           </div>
         </div>
         <div class="card">
           <div class="icon">⚡</div>
           <div>
             <b>Retiros al instante</b>
-            <span>Procesos rápidos (según validación).</span>
+            <span>Proceso ágil (según validación).</span>
           </div>
         </div>
         <div class="card">
           <div class="icon">🔒</div>
           <div>
-            <b>Soporte directo</b>
-            <span>Te acompañamos en el registro.</span>
+            <b>Atención directa</b>
+            <span>Te acompañamos en el alta.</span>
           </div>
         </div>
         <div class="card">
@@ -334,45 +368,34 @@
       </div>
 
       <div class="ctaRow">
-        <button class="btn pulse" id="btn-wa">
-          💬 HABLAR POR WHATSAPP
-        </button>
-        <button class="btn secondary" id="btn-copy">
-          📋 COPIAR MENSAJE
-        </button>
+        <button class="btn btn-wa" id="btn-wa">💬 HABLAR POR WHATSAPP</button>
+        <button class="btn secondary" id="btn-copy">📋 COPIAR MENSAJE</button>
       </div>
 
       <div class="fine">
-        *Contenido informativo. Solo para mayores de edad. Jugá con responsabilidad.
+        *Solo para mayores de edad. Jugá con responsabilidad.
       </div>
     </section>
 
+    <!-- RIGHT -->
     <aside class="panel right">
-      <div class="hero">
-        <div class="brand">
-          <div class="logo">
-            <div class="mark"></div>
-            <div>
-              <div class="brandName">PLATAFORMA VIP</div>
-              <div style="color:rgba(245,241,230,.7); font-size:12px; margin-top:2px;">Acceso por invitación</div>
-            </div>
-          </div>
-          <div class="pill">⚡ Respuesta rápida</div>
+      <div class="stat">
+        <div style="color:rgba(245,241,230,.75); font-weight:900; letter-spacing:.25px; font-size:13px;">
+          Acceso VIP • Mobile-first
         </div>
-
-        <div class="bigNumber"><em>+2.500</em></div>
-        <div class="mini">Juegos disponibles • Experiencia mobile-first</div>
+        <div class="big"><em>+2.500</em></div>
+        <div class="mini">Juegos disponibles • Experiencia optimizada para celular</div>
       </div>
 
-      <div class="phone" aria-label="Vista previa WhatsApp">
-        <div class="phoneTop">
+      <div class="chat" aria-label="Vista previa WhatsApp">
+        <div class="chatTop">
           <span>WhatsApp • Soporte</span>
           <span style="opacity:.75">EN LÍNEA</span>
         </div>
-        <div class="chat">
+        <div class="bubbles">
           <div class="bubble">Hola 👋 ¿Querés que te cree tu usuario VIP?</div>
-          <div class="bubble me">Sí, quiero acceso y crear mi usuario.</div>
-          <div class="bubble">Perfecto. Pasame tu <b>NOMBRE</b> y te lo gestiono ahora ✅</div>
+          <div class="bubble me">Sí, quiero acceso. Me ayudás?</div>
+          <div class="bubble">Perfecto ✅ Pasame tu <b>NOMBRE</b> y lo gestiono ahora.</div>
         </div>
       </div>
     </aside>
@@ -380,38 +403,38 @@
 
   <script>
     function buildWaLink() {
-      const msg = encodeURIComponent(WA_MESSAGE || "Hola! Quiero acceso VIP y crear mi usuario.");
+      const msg = encodeURIComponent(WA_MESSAGE || "Hola! Quiero acceso VIP. Me creás mi usuario?");
       return `https://wa.me/${WHATSAPP_PHONE}?text=${msg}`;
     }
 
-    function safeTrack(eventName) {
-      try {
-        if (window.fbq && typeof window.fbq === "function") {
-          fbq('trackCustom', eventName);
+    function track(eventName){
+      if(!TRACK_CUSTOM_EVENTS) return;
+      try{
+        if(window.fbq && typeof window.fbq === "function"){
+          fbq("trackCustom", eventName);
         }
-      } catch (e) {}
+      }catch(e){}
     }
 
     document.getElementById("btn-wa").addEventListener("click", () => {
-      safeTrack("ClickWhatsApp");
+      track("ClickWhatsApp");
       window.location.href = buildWaLink();
     });
 
     document.getElementById("btn-copy").addEventListener("click", async () => {
-      const text = (WA_MESSAGE || "Hola! vengo del anuncio,quiero crear mi usuario.");
-      try {
+      const text = (WA_MESSAGE || "Hola! vengo del anuncio. Me creás mi usuario?");
+      try{
         await navigator.clipboard.writeText(text);
-        safeTrack("CopyMessage");
+        track("CopyMessage");
         alert("Listo ✅ Mensaje copiado.");
-      } catch (e) {
-        // fallback
+      }catch(e){
         const ta = document.createElement("textarea");
         ta.value = text;
         document.body.appendChild(ta);
         ta.select();
         document.execCommand("copy");
         ta.remove();
-        safeTrack("CopyMessage");
+        track("CopyMessage");
         alert("Listo ✅ Mensaje copiado.");
       }
     });
