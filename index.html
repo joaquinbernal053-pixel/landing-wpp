@@ -4,11 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BetCoin | Accediendo...</title>
+  <meta name="description" content="Accediendo a BetCoin..." />
 
-  <!-- META REDIRECT -->
-  <meta content="2;url=https://betcointoken.com/auth/sign-up/autopubli"/>
-
-  <!-- 🔥 META PIXEL -->
+  <!-- Meta Pixel -->
   <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -17,18 +15,27 @@
     n.queue=[];t=b.createElement(e);t.async=!0;
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}
-    (window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    (window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
 
     fbq('init', '1656348398725230');
-    fbq('track', 'PageView'); // visita a la bridge
+    fbq('track', 'PageView');
   </script>
 
   <noscript>
-    <img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=TU_PIXEL_ID&ev=PageView&noscript=1"/>
+    <img
+      height="1"
+      width="1"
+      style="display:none"
+      src="https://www.facebook.com/tr?id=1656348398725230&ev=PageView&noscript=1"
+      alt=""
+    />
   </noscript>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -37,26 +44,45 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
       text-align: center;
+      padding: 20px;
     }
 
     .card {
-      background: rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.08);
       padding: 30px;
       border-radius: 20px;
       max-width: 420px;
-      width: 90%;
+      width: 100%;
       backdrop-filter: blur(12px);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
     }
 
     .logo {
       font-size: 48px;
       font-weight: 900;
+      margin-bottom: 10px;
+      letter-spacing: -1px;
     }
 
     .logo span {
       color: #ffbf00;
+    }
+
+    h2 {
+      margin: 10px 0 8px;
+    }
+
+    p {
+      margin: 0 0 18px;
+      opacity: 0.9;
+    }
+
+    .status {
+      font-size: 14px;
+      opacity: 0.8;
+      margin-top: 16px;
     }
 
     .btn {
@@ -69,50 +95,83 @@
       font-weight: bold;
       text-decoration: none;
     }
+
+    .bar {
+      margin-top: 18px;
+      width: 100%;
+      height: 8px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar::before {
+      content: "";
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, #ffbf00, #ffd76a);
+      animation: loadBar 2s linear forwards;
+    }
+
+    @keyframes loadBar {
+      from { width: 0; }
+      to { width: 100%; }
+    }
   </style>
 </head>
-
 <body>
+  <div class="card">
+    <div class="logo">BET<span>COIN</span></div>
 
-<div class="card">
-  <div class="logo">BET<span>COIN</span></div>
+    <h2>Ingresando a la plataforma...</h2>
+    <p>Te estamos redirigiendo automáticamente</p>
 
-  <h2>Ingresando a la plataforma...</h2>
-  <p>Te estamos redirigiendo automáticamente</p>
+    <div class="bar"></div>
+    <div class="status">Redirigiendo...</div>
 
-  <a id="btn" class="btn" href="#">INGRESAR AHORA</a>
-</div>
+    <a id="btn" class="btn" href="#">INGRESAR AHORA</a>
+  </div>
 
-<script>
-  const DESTINO = "https://betcointoken.com/auth/sign-up/autopubli";
+  <script>
+    const DESTINO = "https://betcointoken.com/auth/sign-up/autopubli";
+    const params = window.location.search;
+    const finalUrl = params ? DESTINO + params : DESTINO;
 
-  // Mantener UTMs
-  const params = window.location.search;
-  const finalUrl = params ? DESTINO + params : DESTINO;
+    const btn = document.getElementById("btn");
+    btn.href = finalUrl;
 
-  document.getElementById("btn").href = finalUrl;
+    let redirected = false;
 
-  // 🔥 Evento clave: gente que REALMENTE va a la plataforma
-  function redirect() {
-    fbq('trackCustom', 'BridgeRedirect', {
-      destino: 'plataforma'
-    });
-
-    setTimeout(() => {
+    function goToPlatform() {
+      if (redirected) return;
+      redirected = true;
       window.location.href = finalUrl;
-    }, 150); // le damos tiempo a que dispare el pixel
-  }
+    }
 
-  // Auto redirect
-  setTimeout(redirect, 2000);
+    function trackAndRedirect() {
+      if (redirected) return;
 
-  // Click manual
-  document.getElementById("btn").addEventListener("click", function(e){
-    e.preventDefault();
-    redirect();
-  });
+      try {
+        if (typeof fbq !== "undefined") {
+          fbq("trackCustom", "BridgeRedirect", {
+            destino: "plataforma",
+            url_destino: finalUrl
+          });
+        }
+      } catch (e) {
+        console.log("No se pudo disparar BridgeRedirect", e);
+      }
 
-</script>
+      setTimeout(goToPlatform, 500);
+    }
 
+    setTimeout(trackAndRedirect, 2000);
+
+    btn.addEventListener("click", function(e) {
+      e.preventDefault();
+      trackAndRedirect();
+    });
+  </script>
 </body>
 </html>
