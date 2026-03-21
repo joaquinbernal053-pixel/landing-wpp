@@ -1,480 +1,118 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AVES CROUPIER | Acceso VIP</title>
-  <meta name="robots" content="noindex,nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BetCoin | Accediendo...</title>
 
-  <!-- ====== CONFIG ====== -->
+  <!-- META REDIRECT -->
+  <meta http-equiv="refresh" content="2;url=https://TU-LINK-DE-REGISTRO.com"/>
+
+  <!-- 🔥 META PIXEL -->
   <script>
-    const PIXEL_ID = "1406219094329442";
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}
+    (window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
 
-    // Formato internacional sin "+" ni espacios. Ej: 54911xxxxxxxx
-    const WHATSAPP_PHONE = "5491127938822";
-
-    // Mensaje precargado
-    const WA_MESSAGE = "Hola! Vengo del anuncio, me darias mas informacion?";
-
-    // Agrega UTM al mensaje (opcional)
-    const APPEND_UTM_TO_MESSAGE = true;
+    fbq('init', 'TU_PIXEL_ID');
+    fbq('track', 'PageView'); // visita a la bridge
   </script>
 
-  <!-- ====== META PIXEL ====== -->
-  <script>
-    !function(f,b,e,v,n,t,s){
-      if(f.fbq)return; n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n; n.push=n; n.loaded=!0; n.version='2.0';
-      n.queue=[]; t=b.createElement(e); t.async=!0; t.src=v;
-      s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s);
-    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-
-    fbq('init', PIXEL_ID);
-    fbq('track', 'PageView');
-  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=TU_PIXEL_ID&ev=PageView&noscript=1"/>
+  </noscript>
 
   <style>
-    :root{
-      --bg:#060606;
-      --gold:#f2c14e;
-      --gold2:#ffdf8a;
-      --navy:#0b1a2a;
-      --navy2:#0a243a;
-      --text:#eaf0ff;
-      --muted:rgba(234,240,255,.68);
-
-      --btn:#f2b31f;
-      --btn2:#e59e0c;
-
-      --radius:28px;
-      --shadow: 0 20px 60px rgba(0,0,0,.65);
-      --stroke: rgba(255,223,138,.14);
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top left, #5c178f, #120018);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
     }
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      background:
-        radial-gradient(1000px 650px at 50% 12%, rgba(242,193,78,.16), transparent 60%),
-        radial-gradient(900px 520px at 50% 26%, rgba(255,223,138,.08), transparent 62%),
-        radial-gradient(900px 600px at 50% 100%, rgba(11,26,42,.35), transparent 70%),
-        linear-gradient(180deg, #030303, #080808 45%, #020202);
-      color:var(--text);
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-      padding:18px 14px 28px;
-    }
-
-    .phone{
-      width:min(420px, 100%);
-    }
-
-    /* ===== Top Logo ===== */
-    .top{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:10px;
-      padding:10px 0 6px;
-    }
-    .logoCircle{
-      width:168px;
-      height:168px;
-      border-radius:999px;
-      position:relative;
-      display:grid;
-      place-items:center;
-      box-shadow: 0 18px 70px rgba(0,0,0,.75);
-      border:1px solid rgba(242,193,78,.28);
-      background:
-        radial-gradient(circle at 50% 40%, rgba(242,193,78,.25), transparent 55%),
-        radial-gradient(circle at 50% 75%, rgba(242,193,78,.18), transparent 58%),
-        linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.85));
-      overflow:hidden;
-    }
-    .logoCircle::before{
-      content:"";
-      position:absolute; inset:-40px;
-      background:
-        radial-gradient(circle at 35% 35%, rgba(255,223,138,.24), transparent 45%),
-        radial-gradient(circle at 70% 60%, rgba(242,193,78,.18), transparent 52%);
-      filter: blur(2px);
-      opacity:.85;
-    }
-    .spark{
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(2px 2px at 20% 30%, rgba(255,223,138,.8), transparent 60%),
-        radial-gradient(2px 2px at 70% 25%, rgba(255,223,138,.6), transparent 60%),
-        radial-gradient(2px 2px at 55% 75%, rgba(255,223,138,.65), transparent 60%),
-        radial-gradient(2px 2px at 30% 70%, rgba(255,223,138,.55), transparent 60%);
-      opacity:.9;
-      animation: twinkle 2.6s ease-in-out infinite;
-      pointer-events:none;
-    }
-    @keyframes twinkle{
-      0%,100%{opacity:.55}
-      50%{opacity:1}
-    }
-    .logoText{
-      position:relative;
-      z-index:2;
-      text-align:center;
-      font-weight:1000;
-      letter-spacing:1.4px;
-      font-size:28px;
-      line-height:1.05;
-      text-transform:uppercase;
-      background: linear-gradient(180deg, var(--gold2), var(--gold));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-      text-shadow: 0 10px 40px rgba(242,193,78,.18);
-      padding:0 10px;
-    }
-    .pill{
-      margin-top:2px;
-      padding:10px 20px;
-      border-radius:999px;
-      font-weight:900;
-      letter-spacing:.9px;
-      color: rgba(255,223,138,.95);
-      border:2px solid rgba(242,193,78,.35);
-      background: rgba(0,0,0,.25);
-      box-shadow: 0 10px 35px rgba(0,0,0,.55);
-      text-transform:uppercase;
-      font-size:13px;
-    }
-
-    /* ===== Main Card ===== */
-    .card{
-      margin-top:12px;
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(10,34,58,.92), rgba(9,26,42,.92));
-      border:1px solid rgba(255,255,255,.06);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
-    .card::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(520px 260px at 50% 15%, rgba(255,223,138,.14), transparent 60%),
-        radial-gradient(520px 260px at 50% 100%, rgba(242,193,78,.08), transparent 62%);
-      pointer-events:none;
-    }
-    .cardInner{
-      position:relative;
-      z-index:1;
-      padding:22px 18px 16px;
-      text-align:center;
-    }
-
-    .title{
-      margin:0;
-      font-size:34px;
-      line-height:1.1;
-      letter-spacing:.2px;
-      font-weight:1000;
-      text-transform:uppercase;
-    }
-    .title .accent{
-      color: var(--gold);
-      text-shadow: 0 10px 40px rgba(242,193,78,.18);
-    }
-    .subtitle{
-      margin:12px 0 16px;
-      color: rgba(234,240,255,.55);
-      font-size:18px;
-    }
-
-    /* ===== WhatsApp Button ===== */
-    .waBtn{
-      width:100%;
-      max-width:320px;
-      margin: 0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:12px;
-      padding:16px 18px;
-      border-radius:999px;
-      font-weight:1000;
-      letter-spacing:.8px;
-      border:0;
-      cursor:pointer;
-      color:#ffffff;
-      background: linear-gradient(180deg, var(--btn), var(--btn2));
-      box-shadow: 0 18px 50px rgba(242,179,31,.22);
-      position:relative;
-      overflow:hidden;
-      transform: translateZ(0);
-      animation: pulse 1.7s ease-in-out infinite;
-      text-transform:uppercase;
-      font-size:18px;
-    }
-    .waBtn:hover{filter: brightness(1.03);}
-    .waBtn:active{transform: translateY(1px);}
-
-    /* shimmer */
-    .waBtn::after{
-      content:"";
-      position:absolute;
-      top:-55%;
-      left:-65%;
-      width:60%;
-      height:210%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.50), transparent);
-      transform: skewX(-18deg);
-      animation: shimmer 1.8s ease-in-out infinite;
-      opacity:.8;
-      pointer-events:none;
-    }
-
-    /* ring glow */
-    .waGlow{
-      margin: 16px auto 0;
-      width: 92%;
-      height: 0;
-      position:relative;
-    }
-    .waGlow::before{
-      content:"";
-      position:absolute;
-      left:50%;
-      top:-54px;
-      transform: translateX(-50%);
-      width: 360px;
-      height: 120px;
-      border-radius:999px;
-      background: radial-gradient(circle at 50% 50%, rgba(242,179,31,.32), transparent 68%);
-      filter: blur(2px);
-      opacity:.9;
-      pointer-events:none;
-    }
-
-    @keyframes pulse{
-      0%,100%{ box-shadow: 0 18px 50px rgba(242,179,31,.18); }
-      50%{ box-shadow: 0 22px 75px rgba(242,179,31,.30); }
-    }
-    @keyframes shimmer{
-      0%{ left:-65%; }
-      62%{ left:120%; }
-      100%{ left:120%; }
-    }
-
-    .waIcon{
-      width:34px; height:34px;
-      border-radius:999px;
-      background: rgba(255,255,255,.18);
-      display:grid;
-      place-items:center;
-      border:1px solid rgba(255,255,255,.18);
-      flex:0 0 auto;
-    }
-    .waIcon svg{display:block}
-
-    .note{
-      margin:14px 0 0;
-      color: rgba(242,193,78,.9);
-      letter-spacing:.7px;
-      font-size:14px;
-      text-transform:uppercase;
-    }
-
-    /* ===== Mini stats card ===== */
-    .mini{
-      margin:14px 0 0;
+    .card {
+      background: rgba(255,255,255,0.08);
+      padding: 30px;
       border-radius: 20px;
-      background: rgba(10,34,58,.55);
-      border:1px solid rgba(255,255,255,.06);
-      overflow:hidden;
-    }
-    .miniRow{
-      display:grid;
-      grid-template-columns:1fr 1fr 1fr;
-      gap:0;
-      text-align:center;
-    }
-    .miniCell{
-      padding:14px 8px 12px;
-      border-right:1px solid rgba(255,255,255,.06);
-    }
-    .miniCell:last-child{border-right:0}
-    .miniLabel{
-      color: rgba(234,240,255,.55);
-      font-size:14px;
-      letter-spacing:.5px;
-      text-transform:none;
-      line-height:1.1;
-    }
-    .miniLabel b{
-      color: rgba(234,240,255,.75);
-      font-weight:900;
-    }
-    .miniValue{
-      margin-top:10px;
-      color: var(--gold);
-      font-weight:1000;
-      font-size:22px;
-      letter-spacing:.2px;
-    }
-    .miniValue.small{
-      font-size:20px;
+      max-width: 420px;
+      width: 90%;
+      backdrop-filter: blur(12px);
     }
 
-    .footer{
-      margin:14px 0 0;
-      text-align:center;
-      color: rgba(234,240,255,.42);
-      font-size:14px;
+    .logo {
+      font-size: 48px;
+      font-weight: 900;
     }
 
-    /* ===== Games strip ===== */
-    .games{
-      margin-top:14px;
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap:10px;
-      opacity:.95;
-    }
-    .game{
-      height:64px;
-      border-radius: 12px;
-      border:1px solid rgba(255,255,255,.08);
-      background:
-        radial-gradient(120px 80px at 30% 30%, rgba(255,223,138,.22), transparent 60%),
-        linear-gradient(180deg, rgba(34,17,61,.95), rgba(9,26,42,.9));
-      box-shadow: 0 14px 40px rgba(0,0,0,.45);
-      position:relative;
-      overflow:hidden;
-    }
-    .game::after{
-      content:"";
-      position:absolute; inset:0;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
-      transform: translateX(-60%);
-      animation: sweep 3.2s ease-in-out infinite;
-    }
-    @keyframes sweep{
-      0%{transform: translateX(-60%)}
-      55%{transform: translateX(120%)}
-      100%{transform: translateX(120%)}
+    .logo span {
+      color: #ffbf00;
     }
 
-    @media (max-width: 360px){
-      .title{font-size:30px}
-      .subtitle{font-size:16px}
-      .games{grid-template-columns: repeat(2, 1fr)}
-      .game{height:62px}
+    .btn {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 12px 20px;
+      background: #ffbf00;
+      color: black;
+      border-radius: 10px;
+      font-weight: bold;
+      text-decoration: none;
     }
   </style>
 </head>
 
 <body>
-  <div class="phone">
-    <!-- TOP -->
-    <div class="top">
-      <div class="logoCircle" aria-label="AVES CROUPIER">
-        <div class="spark" aria-hidden="true"></div>
-        <div class="logoText">AVES<br/>CROUPIER</div>
-      </div>
-      <div class="pill">ACCESO VIP</div>
-    </div>
 
-    <!-- MAIN CARD -->
-    <section class="card">
-      <div class="cardInner">
-        <h1 class="title">OBTENÉ UN <span class="accent">50%</span> EN TU<br/>PRIMER DEPOSITO</h1>
-        <div class="subtitle">Escribinos apretando el botón de abajo</div>
+<div class="card">
+  <div class="logo">BET<span>COIN</span></div>
 
-        <button class="waBtn" id="btn-wa" type="button">
-          <span class="waIcon" aria-hidden="true">
-            <!-- WhatsApp-ish icon -->
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-              <path d="M20.5 11.9c0 4.7-3.9 8.6-8.6 8.6-1.5 0-2.9-.4-4.1-1.1L3.5 20.5l1.1-4.1c-.7-1.2-1.1-2.6-1.1-4.1C3.5 7.6 7.4 3.7 12.1 3.7c4.6 0 8.4 3.7 8.4 8.2Z" stroke="white" stroke-width="2" opacity=".95"/>
-              <path d="M10.2 9.2c.2-.4.4-.4.6-.4h.5c.2 0 .4 0 .5.3l.7 1.7c.1.2.1.4 0 .6l-.3.5c-.1.1-.2.3 0 .6.2.3.7 1.1 1.5 1.8.9.8 1.6 1 1.9 1.1.2.1.4 0 .5-.1l.7-.8c.2-.2.4-.2.6-.1l1.5.7c.2.1.3.3.3.5 0 .2-.1.6-.5.9-.4.3-1 .7-2.2.6-1.2-.1-2.7-.7-4-1.9-1.3-1.1-2.2-2.6-2.5-3.6-.3-1 .1-1.7.4-2.1Z" fill="white" opacity=".95"/>
-            </svg>
-          </span>
-          WHATSAPP OFICIAL
-        </button>
+  <h2>Ingresando a la plataforma...</h2>
+  <p>Te estamos redirigiendo automáticamente</p>
 
-        <div class="waGlow" aria-hidden="true"></div>
+  <a id="btn" class="btn" href="#">INGRESAR AHORA</a>
+</div>
 
-        <div class="note">ATENCIÓN Y RETIROS SIN LIMITES LAS 24 HS</div>
+<script>
+  const DESTINO = "https://TU-LINK-DE-REGISTRO.com";
 
-        <!-- mini stats -->
-        <div class="mini">
-          <div class="miniRow">
-            <div class="miniCell">
-              <div class="miniLabel">Mínimo de<br/><b>CARG4</b></div>
-              <div class="miniValue">$2.000</div>
-            </div>
-            <div class="miniCell">
-              <div class="miniLabel">Mínimo de<br/><b>RETIRO</b></div>
-              <div class="miniValue">$5.000</div>
-            </div>
-            <div class="miniCell">
-              <div class="miniLabel"><b>RETIROS</b><br/>24 HS</div>
-              <div class="miniValue small">24 HS</div>
-            </div>
-          </div>
-        </div>
+  // Mantener UTMs
+  const params = window.location.search;
+  const finalUrl = params ? DESTINO + params : DESTINO;
 
-        <div class="footer">© 2026 el juego es solo +18. Operá con responsabilidad.</div>
-      </div>
-    </section>
+  document.getElementById("btn").href = finalUrl;
 
-    <!-- Games -->
-    <div class="games" aria-label="Juegos">
-      <div class="game"></div>
-      <div class="game"></div>
-      <div class="game"></div>
-      <div class="game"></div>
-    </div>
-  </div>
-
-  <script>
-    function safeFbq(type, name, params){
-      try{
-        if(window.fbq && typeof window.fbq === "function"){
-          if(type === "standard") fbq("track", name, params || {});
-          if(type === "custom") fbq("trackCustom", name, params || {});
-        }
-      }catch(e){}
-    }
-
-    function getUtmString(){
-      const p = new URLSearchParams(window.location.search);
-      const keys = ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"];
-      const parts = [];
-      for (const k of keys){
-        const v = p.get(k);
-        if(v) parts.push(`${k}=${v}`);
-      }
-      return parts.length ? `\n\n${parts.join(" | ")}` : "";
-    }
-
-    function buildWaLink(){
-      let msg = (WA_MESSAGE || "Hola! Vengo del anuncio. Me darias mas informacion?");
-      if(APPEND_UTM_TO_MESSAGE) msg += getUtmString();
-      return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
-    }
-
-    document.getElementById("btn-wa").addEventListener("click", () => {
-      // 1) Evento estándar "Subscribe" al tocar el botón
-      safeFbq("standard", "Subscribe", {source: "landing_whatsapp_button"});
-
-      // 2) Evento custom al abrir WhatsApp (no se puede confirmar “mensaje enviado” desde la landing)
-      safeFbq("custom", "WhatsAppClick", {destination: "wa.me"});
-
-      window.location.href = buildWaLink();
+  // 🔥 Evento clave: gente que REALMENTE va a la plataforma
+  function redirect() {
+    fbq('trackCustom', 'BridgeRedirect', {
+      destino: 'plataforma'
     });
-  </script>
+
+    setTimeout(() => {
+      window.location.href = finalUrl;
+    }, 150); // le damos tiempo a que dispare el pixel
+  }
+
+  // Auto redirect
+  setTimeout(redirect, 2000);
+
+  // Click manual
+  document.getElementById("btn").addEventListener("click", function(e){
+    e.preventDefault();
+    redirect();
+  });
+
+</script>
+
 </body>
 </html>
